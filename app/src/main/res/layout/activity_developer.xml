@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="com.example.geekshivam.i_cms.Developer">
+    <FrameLayout
+        android:id="@+id/dsa"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="10dp"
+            />
+        <TextView
+            android:id="@+id/iCMS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="115dp"
+            android:text="i-CMS "
+            android:textStyle="bold"
+            android:textColor="@color/Black"
+            android:fontFamily="@font/adventpro_semibold"
+            android:layout_marginTop="25dp"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/iCM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="115dp"
+            android:text="We pursue a relaxed computering experience."
+            android:textStyle="italic"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/adventpro_semibold"
+            android:textSize="15sp"/>
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dsa">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/gradient">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+
+
+</RelativeLayout>
