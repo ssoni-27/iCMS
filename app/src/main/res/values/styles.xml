@@ -1,0 +1,95 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Sky_Blue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="EditScreenTextInputLayoutStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/textInputLayout</item>
+        <item name="colorControlActivated">@color/textInputLayout</item>
+        <item name="colorControlHighlight">@color/textInputLayout</item>
+        <item name="colorAccent">@color/textInputLayout</item>
+        <item name="android:textColorHint">@color/textInputLayout</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="appCompatStyle" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/Sky_Blue</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:editTextStyle">@style/editTextStyle</item>
+    </style>
+
+
+    <!-- changes the default text colour for the EditTexts -->
+    <style name="editTextStyle" parent="android:style/Widget.EditText">
+        <item name="android:textColor">@color/Sky_Blue</item>
+    </style>
+
+    <string-array name="Complaint_type">
+        <item>Select Complaint</item>
+        <item>Network(Wired)</item>
+        <item>Wifi</item>
+    </string-array>
+
+    <string-array name="c_sub_cat">
+<item>Select Sub Category</item>
+        <item>I/O Port Broken</item>
+        <item>Internet Networking</item>
+        <item>URL not opening</item>
+        <item>UPS Down</item>
+        <item>Network Switch Down</item>
+        <item>Ready light not glowing</item>
+        <item>No network connectivity</item>
+        <item>CDE is down</item>
+        <item>other..</item>
+
+    </string-array>
+
+    <string-array name="c_sub_cat2">
+
+        <item>I/O Port Broken</item>
+        <item>Internet Networking</item>
+        <item>URL not opening</item>
+        <item>UPS Down</item>
+        <item>Network Switch Down</item>
+        <item>Ready light not glowing</item>
+        <item>No network connectivity</item>
+        <item>CDE is down</item>
+        <item>other..</item>
+
+    </string-array>
+
+    <string-array name="Bhawan">
+        <item>Select Bhawan</item>
+        <item>Ashik Bhawan</item>
+        <item>Bhagirath Bhawan</item>
+        <item>Budh Bhawan</item>
+        <item>CV Raman bhawan</item>
+        <item>Gandhi bhawan</item>
+        <item>Krishna bhawan</item>
+        <item>Malviya bhawan- A</item>
+        <item>Malviya bhawan- B</item>
+        <item>Malviya bhawan- C</item>
+        <item>Meera bhawan</item>
+        <item>Ram bhawan</item>
+        <item>RanaPratapbhawan</item>
+        <item>Shankar bhawan</item>
+        <item>Srinivas Ramanujan bhawan</item>
+        <item>Vishwakarma bhawan</item>
+        <item>Vyash bhawan</item>
+    </string-array>
+
+</resources>

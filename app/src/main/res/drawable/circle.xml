@@ -6,7 +6,7 @@
             android:shape="rectangle">
             <stroke
                 android:width="2dp"
-                android:color="@color/Sky_Blue" />
+                android:color="#3700B3" />
 
             <padding
                 android:bottom="5dp"
@@ -14,12 +14,8 @@
                 android:right="5dp"
                 android:top="5dp" />
 
-            <corners android:radius="400dp" />
-            <gradient
-                android:angle="0"
-                android:startColor="#b2fefa"
-                android:endColor="#0ed2f7"
-                android:type="linear"/>
+            <corners android:radius="54dp" />
+
         </shape>
     </item>
 </selector>

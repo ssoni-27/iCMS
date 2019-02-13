@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1d1d1d</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="textInputLayout">#96ffffff</color>
+    <color name="back_shade4">#130f2b</color>
+    <color name="Black">#1b1b1b</color>
+    <color name="gold">#D4AF37</color>
+    <color name="orange_shade">#E64A19</color>
+    <color name="Sky_Blue">#87CEFA</color>
+    <color name="Blue">#00BFFF</color>
+    <color name="developer">#73FFDE</color>
+
+    <color name="light_Sky">#E4F1F9</color>
+</resources>

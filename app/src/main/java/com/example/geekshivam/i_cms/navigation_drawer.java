@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,23 +14,64 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridLayout;
 
 public class navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static String currentFragment="";
+    CardView a;
+    CardView b;
+    CardView c;
+    CardView d;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //gridView
+        a=findViewById(R.id.new1);
+        a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
+                startActivity(new12);
+            }
+        });
 
+        b=findViewById(R.id.new2);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
+                startActivity(new12);
+            }
+        });
+
+        c=findViewById(R.id.new3);
+        c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
+                startActivity(new12);
+            }
+        });
+
+        d=findViewById(R.id.new4);
+        d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
+                startActivity(new12);
+            }
+        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i = new Intent(navigation_drawer.this,add_compilant.class);
+                startActivity(i);
             }
         });
 
@@ -98,11 +140,11 @@ public class navigation_drawer extends AppCompatActivity
             startActivity(settings);
 
         } else if (id == R.id.nav_contact) {
-            Intent contact  = new Intent(this,Contact.class);
+            Intent contact = new Intent(this,Contact.class);
             startActivity(contact);
 
         } else if (id == R.id.nav_logout) {
-            Intent logout = new Intent(this,Logout.class);
+            Intent logout = new Intent(this,i_CMS.class);
             startActivity(logout);
 
         }
