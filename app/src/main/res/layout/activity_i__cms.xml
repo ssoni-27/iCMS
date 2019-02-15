@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@color/Sky_Blue">
+        android:background="#2D89E5">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -43,57 +43,66 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/Black"
+                android:layout_height="match_parent"
                 android:layout_marginTop="60dp"
+                android:orientation="vertical"
+                android:textColorHint="@color/Black"
                 android:theme="@style/EditScreenTextInputLayoutStyle">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/Blue" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:drawablePadding="16dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/colorPrimaryDark"
                     android:drawableRight="@drawable/ic_email_white_24dp"
                     android:fontFamily="@font/calibri"
                     android:hint="Email"
-                    android:backgroundTint="@color/Sky_Blue"
                     android:inputType="textEmailAddress"
-                    android:background="@drawable/circle"
                     android:maxLines="1"
+                    android:paddingLeft="16dp"
                     android:textColor="@color/Black"
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:textColorHint="@color/Black"
                 android:theme="@style/EditScreenTextInputLayoutStyle">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/Blue" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:drawablePadding="15dp"
+                    android:layout_height="match_parent"
                     android:drawableRight="@drawable/ic_lock_white_24dp"
                     android:fontFamily="@font/calibri"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:background="@drawable/circle"
-                    android:backgroundTint="@color/Sky_Blue"
+                    android:paddingLeft="15dp"
                     android:textColor="@color/Black"
                     android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <com.google.android.gms.common.SignInButton
                     android:id="@+id/fab_g_login"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
@@ -108,8 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:background="@drawable/circle"
-                    android:backgroundTint="@color/Sky_Blue"
+                    android:background="@drawable/background_new"
                     android:fontFamily="@font/calibri"
                     android:text="Sign in"
                     android:textAllCaps="false"
@@ -117,6 +125,7 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
             </LinearLayout>
+
 
 
         </LinearLayout>

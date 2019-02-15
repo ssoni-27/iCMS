@@ -4,14 +4,14 @@ package com.example.geekshivam.i_cms.model;
  * Created by Shivani Soni on 13-02-2019.
  */
 
-public class model {
+public class model_developer{
     private int imageid;
     private String  name;
     private String email;
     private String numbers;
     private String desc;
 
-    public model(int imageid, String name, String email,String numbers, String desc) {
+    public model_developer(int imageid, String name, String email,String numbers, String desc) {
         this.imageid = imageid;
         this.name = name;
         this.email = email;

@@ -82,11 +82,12 @@ public int getItemCount() {
     ImageView pic;
     TextView name;
     TextView email;
-
-        private ImageView call;
+   TextView desc;
+            private ImageView call;
         private ImageView mail;
         public Myholder(View itemView) {
             super(itemView);
+            desc= (TextView) itemView.findViewById(R.id.desp);
             pic = (ImageView) itemView.findViewById(R.id.yoyo);
             name=(TextView) itemView.findViewById(R.id.tv_name);
             email=(TextView) itemView.findViewById(R.id.email);
