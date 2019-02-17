@@ -100,7 +100,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.gms.common.SignInButton
-                    android:id="@+id/fab_g_login"
+                    android:id="@+id/google_SignIn_Btn"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
