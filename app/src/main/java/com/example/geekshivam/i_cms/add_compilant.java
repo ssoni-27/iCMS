@@ -1,14 +1,11 @@
 package com.example.geekshivam.i_cms;
 
 import android.app.DatePickerDialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,14 +13,22 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 
 public class add_compilant extends AppCompatActivity implements DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener {
     Spinner spinner1, spinner2, spinner3;
     Button date, time1, time2,register;
     Calendar c;
+
+    //Firebase Database
+    DatabaseReference mDatabaseReference;
+
+    //Complaint object
+    Complaint complaint_obj;
 
     //date
     @Override
@@ -47,7 +52,11 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_compilant);
-//current time1
+
+        //Firebase reference initialise
+        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
+
+        //current time1
         time1 = (Button) findViewById(R.id.time);
         time2 = (Button) findViewById(R.id.time2);
         time1.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +84,8 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                complaint_obj=new Complaint("a","b","c","d",123,"e","f");
+                register_complaint(mDatabaseReference,complaint_obj);
                 Toast.makeText(add_compilant.this, "Your complaint is registered.", Toast.LENGTH_SHORT).show();
                 Intent e=new Intent(add_compilant.this,navigation_drawer.class);
                 startActivity(e);
@@ -118,6 +129,16 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
             Toast.makeText(this, "Fill the requirements", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+
+    //register complaint and return success status.
+    public boolean register_complaint(DatabaseReference mDatabaseReference,Complaint c)
+    {
+        mDatabaseReference.child("Complaints").push().setValue(c);
+
+        //TODO:check weather value added properly.
+        return true;
     }
 
 }

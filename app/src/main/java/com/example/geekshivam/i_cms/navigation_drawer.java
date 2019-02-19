@@ -93,6 +93,7 @@ public class navigation_drawer extends AppCompatActivity
             public void onClick(View v) {
                 Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
                 startActivity(new12);
+
             }
         });
 
@@ -116,15 +117,6 @@ public class navigation_drawer extends AppCompatActivity
         //Display name text view
         displayName_TV=findViewById(R.id.displayName_TextView);
         displayName_TV.setText(displayName);
-
-        //Log out button
-        logout_Btn=findViewById(R.id.logout_button);
-        logout_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mFirebaseAuth.signOut();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -195,8 +187,7 @@ public class navigation_drawer extends AppCompatActivity
             startActivity(contact);
 
         } else if (id == R.id.nav_logout) {
-            Intent logout = new Intent(this,i_CMS.class);
-            startActivity(logout);
+            mFirebaseAuth.signOut();
 
         }
 
