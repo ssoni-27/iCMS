@@ -51,6 +51,7 @@ public class i_CMS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_i__cms);
 
+        // Listen for logged in state.
         mAuth=FirebaseAuth.getInstance();
 
         mAuthStateListener=new FirebaseAuth.AuthStateListener() {
@@ -58,6 +59,7 @@ public class i_CMS extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!=null)
                 {
+
                     startActivity(new Intent(i_CMS.this,navigation_drawer.class));
                 }
 
@@ -75,7 +77,8 @@ public class i_CMS extends AppCompatActivity {
 
         sign= (Button) findViewById(R.id.sign);
         final Intent intent = new Intent(i_CMS.this, navigation_drawer.class);
-       sign.setOnClickListener(new View.OnClickListener() {
+
+        sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -2,6 +2,7 @@ package com.example.geekshivam.i_cms;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
@@ -14,22 +15,59 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static String currentFragment="";
+
     CardView a;
     CardView b;
     CardView c;
     CardView d;
+    Button logout_Btn;
+    TextView displayName_TV;
+
+    String displayName="";
+
+    //Firebase Objects
+    FirebaseAuth mFirebaseAuth=FirebaseAuth.getInstance();;
+    FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mAuthStateListener=new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if(firebaseAuth.getCurrentUser()==null)
+                {
+                    startActivity(new Intent(navigation_drawer.this,i_CMS.class));
+                }
+            }
+        };
+
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //TODO:get display name
+        if(mFirebaseAuth.getCurrentUser().getEmail()!=null)
+        displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
+
         //gridView
         a=findViewById(R.id.new1);
         a.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +97,7 @@ public class navigation_drawer extends AppCompatActivity
         });
 
         d=findViewById(R.id.new4);
-        d.setOnClickListener(new View.OnClickListener() {
+            d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
@@ -72,6 +110,19 @@ public class navigation_drawer extends AppCompatActivity
             public void onClick(View view) {
                 Intent i = new Intent(navigation_drawer.this,add_compilant.class);
                 startActivity(i);
+            }
+        });
+
+        //Display name text view
+        displayName_TV=findViewById(R.id.displayName_TextView);
+        displayName_TV.setText(displayName);
+
+        //Log out button
+        logout_Btn=findViewById(R.id.logout_button);
+        logout_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mFirebaseAuth.signOut();
             }
         });
 
