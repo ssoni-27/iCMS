@@ -32,11 +32,13 @@ public class i_CMS extends AppCompatActivity {
     private final static String TAG="iCMS";
     private final static int RC_SIGN_IN=1234;
 
-    GoogleSignInClient mGoogleSignInClient;
     Button sign;
     SignInButton google_SignIn_Btn;
+
+    //Sign in objects
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
+    GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onStart() {
@@ -59,18 +61,20 @@ public class i_CMS extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()!=null)
                 {
-
+                    //next activity if already logged in.
                     startActivity(new Intent(i_CMS.this,navigation_drawer.class));
                 }
 
             }
         };
 
-        // Configure Google Sign In
+        // Configure Google Sign In Options
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
+
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(i_CMS.this, gso);

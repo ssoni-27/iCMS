@@ -25,6 +25,7 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
     Calendar c;
 
     //Firebase Database
+    FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
 
     //Complaint object
@@ -54,7 +55,8 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
         setContentView(R.layout.activity_add_compilant);
 
         //Firebase reference initialise
-        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
+        mFirebaseDatabase=FirebaseDatabase.getInstance();
+        mDatabaseReference= mFirebaseDatabase.getInstance().getReference();
 
         //current time1
         time1 = (Button) findViewById(R.id.time);
@@ -79,7 +81,8 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         spinner3 = (Spinner) findViewById(R.id.spinner3);
-       //register
+
+        //register
         register=(Button) findViewById(R.id.ok);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,9 +136,9 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
 
 
     //register complaint and return success status.
-    public boolean register_complaint(DatabaseReference mDatabaseReference,Complaint c)
+    public boolean register_complaint(DatabaseReference m,Complaint c)
     {
-        mDatabaseReference.child("Complaints").push().setValue(c);
+        m.child("Complaints").push().setValue(c);
 
         //TODO:check weather value added properly.
         return true;

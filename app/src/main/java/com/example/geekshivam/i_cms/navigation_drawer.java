@@ -32,6 +32,7 @@ public class navigation_drawer extends AppCompatActivity
     CardView d;
     Button logout_Btn;
     TextView displayName_TV;
+    TextView header_name;
 
     String displayName="";
 
@@ -57,6 +58,9 @@ public class navigation_drawer extends AppCompatActivity
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +70,7 @@ public class navigation_drawer extends AppCompatActivity
 
         //TODO:get display name
         if(mFirebaseAuth.getCurrentUser().getEmail()!=null)
-        displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
+            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
 
         //gridView
         a=findViewById(R.id.new1);
@@ -115,8 +119,11 @@ public class navigation_drawer extends AppCompatActivity
         });
 
         //Display name text view
-        displayName_TV=findViewById(R.id.displayName_TextView);
+        displayName_TV=(TextView) findViewById(R.id.displayName_TextView);
         displayName_TV.setText(displayName);
+
+        //header_name=(TextView)findViewById(R.id.header_name);
+        //header_name.setText(displayName);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
