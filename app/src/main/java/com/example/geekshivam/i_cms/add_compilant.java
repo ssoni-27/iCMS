@@ -87,7 +87,10 @@ public class add_compilant extends AppCompatActivity implements DatePickerDialog
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                complaint_obj=new Complaint("a","b","c","d",123,"e","f");
+
+                //TODO:Complaint properly.
+                complaint_obj=new Complaint(spinner1.getTransitionName(),spinner2.getTransitionName(),"Description not added yet.",spinner3.getTransitionName(),123,"to be done","to be done");
+
                 register_complaint(mDatabaseReference,complaint_obj);
                 Toast.makeText(add_compilant.this, "Your complaint is registered.", Toast.LENGTH_SHORT).show();
                 Intent e=new Intent(add_compilant.this,navigation_drawer.class);
