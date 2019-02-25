@@ -20,6 +20,9 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.app.FragmentManager;
 
 public class navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,7 +32,6 @@ public class navigation_drawer extends AppCompatActivity
     CardView a;
     CardView b;
     CardView c;
-    CardView d;
     Button logout_Btn;
     TextView displayName_TV;
     TextView header_name;
@@ -50,7 +52,8 @@ public class navigation_drawer extends AppCompatActivity
 
                 if(firebaseAuth.getCurrentUser()==null)
                 {
-                    startActivity(new Intent(navigation_drawer.this,i_CMS.class));
+                    //TODO: undo  this
+                    //startActivity(new Intent(navigation_drawer.this,i_CMS.class));
                 }
             }
         };
@@ -65,12 +68,13 @@ public class navigation_drawer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //TODO:get display name
-        if(mFirebaseAuth.getCurrentUser().getEmail()!=null)
-            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
+        //TODO:undo comment
+        //get display name
+//        if(mFirebaseAuth.getCurrentUser().getEmail()!=null)
+//            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
 
         //gridView
         a=findViewById(R.id.new1);
@@ -81,46 +85,29 @@ public class navigation_drawer extends AppCompatActivity
                 startActivity(new12);
             }
         });
-
         b=findViewById(R.id.new2);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
+                Intent new12=new Intent(navigation_drawer.this,gridview_2.class);
                 startActivity(new12);
             }
         });
-
-        c=findViewById(R.id.new3);
+        c=findViewById(R.id.acl);
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
-                startActivity(new12);
-
-            }
-        });
-
-        d=findViewById(R.id.new4);
-            d.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
+                Intent new12=new Intent(navigation_drawer.this,Active_complaints.class);
                 startActivity(new12);
             }
         });
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(navigation_drawer.this,add_compilant.class);
-                startActivity(i);
-            }
-        });
 
+
+
+        //TODO:undo comment.
         //Display name text view
-        displayName_TV=(TextView) findViewById(R.id.displayName_TextView);
-        displayName_TV.setText(displayName);
+//        displayName_TV=(TextView) findViewById(R.id.displayName_TextView);
+//        displayName_TV.setText(displayName);
 
         //header_name=(TextView)findViewById(R.id.header_name);
         //header_name.setText(displayName);
@@ -135,6 +122,7 @@ public class navigation_drawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -145,27 +133,6 @@ public class navigation_drawer extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_drawer, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -177,19 +144,12 @@ public class navigation_drawer extends AppCompatActivity
             Intent intent=new Intent(this,profile_activity.class);
             startActivity(intent);
             // Handle the camera action
-        } else if (id == R.id.nav_pc) {
-            Intent pc = new Intent(this,Previous_complaints.class);
-            startActivity(pc);
 
         } else if (id == R.id.nav_developer) {
             Intent developer = new Intent(this,Developer.class);
             startActivity(developer);
 
-        } else if (id == R.id.nav_settings) {
-            Intent settings = new Intent(this,Settings.class);
-            startActivity(settings);
-
-        } else if (id == R.id.nav_contact) {
+        }  else if (id == R.id.nav_contact) {
             Intent contact = new Intent(this,Contact.class);
             startActivity(contact);
 

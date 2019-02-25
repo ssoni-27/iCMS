@@ -7,6 +7,42 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.geekshivam.i_cms.navigation_drawer"
     tools:showIn="@layout/app_bar_navigation_drawer">
+    <android.support.v7.widget.CardView
+        android:id="@+id/acl"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/grid_content"
+        android:layout_marginLeft="25dp"
+        android:background="@drawable/grid_layout"
+       android:layout_marginRight="15dp"
+        android:layout_marginBottom="25dp"
+        app:cardCornerRadius="25dp">
+
+        <TextView
+            android:id="@+id/Active"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Active Complaints List"
+            android:fontFamily="@font/calibri"
+            android:textSize="25dp"
+            android:layout_marginLeft="45dp"
+            android:textColor="@color/Black"
+           android:layout_gravity="center"/>
+
+        <View
+            android:layout_width="220dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="15dp"
+            android:background="#2D89E5" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="6dp"
+            android:src="@drawable/active" />
+    </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:id="@+id/gradient"
@@ -23,10 +59,12 @@
             android:layout_marginLeft="115dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bitspilani"/>
+
     </LinearLayout>
     <GridLayout
+        android:id="@+id/grid_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="250dp"
         android:columnOrderPreserved="false"
         android:columnCount="2"
         android:layout_weight="8"
@@ -41,13 +79,14 @@
             android:layout_height="0dp"
             android:layout_alignParentTop="true"
             android:layout_columnWeight="1"
+
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="35dp"
+            android:layout_marginBottom="25dp"
             android:layout_rowWeight="1"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,21 +98,33 @@
                     android:id="@+id/image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/addi"
+                    />
             </LinearLayout>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Complaints"
+                android:fontFamily="@font/calibri"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="138dp"
+                android:textColor="@color/Black"/>
 
         </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:id="@+id/new2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_alignParentTop="true"
             android:layout_columnWeight="1"
+            android:layout_marginBottom="25dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="35dp"
             android:layout_rowWeight="1"
+
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
@@ -85,62 +136,22 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/allo"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/pc"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="1dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal" />
+                    android:src="@drawable/ftprioritise" />
             </LinearLayout>
 
-
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:id="@+id/new3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentTop="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="35dp"
-            android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
-
+                android:text="Previous Complaints"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="135dp"
+                android:textColor="@color/Black"/>
         </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:id="@+id/new4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentTop="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="35dp"
-            android:layout_rowWeight="1"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
-            </LinearLayout>
-
-
-        </android.support.v7.widget.CardView>
-
 
 
     </GridLayout>

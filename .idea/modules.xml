@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\oyo\i_CMS\app\app.iml" filepath="F:\oyo\i_CMS\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/i_CMS.iml" filepath="$PROJECT_DIR$/i_CMS.iml" />
+      <module fileurl="file://F:\oyo\i_CMS\i_CMS.iml" filepath="F:\oyo\i_CMS\i_CMS.iml" />
     </modules>
   </component>
 </project>

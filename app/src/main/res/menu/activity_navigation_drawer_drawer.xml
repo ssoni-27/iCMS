@@ -7,18 +7,11 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person_black_24dp"
             android:title="Profile" />
-        <item
-            android:id="@+id/nav_pc"
-            android:icon="@drawable/ic_bug_report_black_24dp"
-            android:title="Previous Complaints" />
+
         <item
             android:id="@+id/nav_developer"
             android:icon="@drawable/ic_developer_board_black_24dp"
             android:title="Developer" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" />
     </group>
 
     <item android:title="More">

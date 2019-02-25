@@ -8,9 +8,9 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="iCMS"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -31,9 +31,10 @@
         <activity android:name=".Previous_complaints" />
         <activity android:name=".Developer" />
         <activity android:name=".Settings" />
-        <activity android:name=".add_compilant" />
         <activity android:name=".gridview1_new" />
-        <activity android:name=".Contact"></activity>
+        <activity android:name=".Contact" />
+        <activity android:name=".gridview_2" />
+        <activity android:name=".Active_complaints"></activity>
     </application>
 
 </manifest>

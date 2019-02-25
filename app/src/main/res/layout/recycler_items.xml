@@ -9,8 +9,8 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardCornerRadius="25dp"
-            app:cardBackgroundColor="@color/Sky_Blue">
+            app:cardCornerRadius="15dp"
+            android:background="@drawable/grid_layout">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -23,6 +23,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="24sp"
+                    android:fontFamily="@font/calibri"
                     android:text="List Item"
                     android:layout_gravity="center"
                     android:paddingLeft="32dp"
