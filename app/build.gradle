@@ -30,6 +30,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
+
     //firebase dependencies
     implementation 'com.google.firebase:firebase-core:16.0.7'
     implementation 'com.google.firebase:firebase-auth:16.1.0'

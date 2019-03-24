@@ -60,8 +60,8 @@
 
     <string-array name="c_sub_cat2">
 
-        <item>I/O Port Broken</item>
-        <item>Internet Networking</item>
+        <item>a</item>
+        <item>b</item>
         <item>URL not opening</item>
         <item>UPS Down</item>
         <item>Network Switch Down</item>

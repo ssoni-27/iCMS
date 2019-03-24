@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -21,7 +22,6 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.app.FragmentManager;
 
 public class navigation_drawer extends AppCompatActivity
@@ -81,26 +81,37 @@ public class navigation_drawer extends AppCompatActivity
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent new12=new Intent(navigation_drawer.this,gridview1_new.class);
-                startActivity(new12);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+                ft.replace(R.id.containHome, new gridview1_new());
+
+                ft.commit();
             }
         });
         b=findViewById(R.id.new2);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent new12=new Intent(navigation_drawer.this,gridview_2.class);
-                startActivity(new12);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+                ft.replace(R.id.containHome, new gridview_2());
+
+                ft.commit();
             }
         });
         c=findViewById(R.id.acl);
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent new12=new Intent(navigation_drawer.this,Active_complaints.class);
-                startActivity(new12);
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+                ft.replace(R.id.containHome, new Active_complaints());
+
+                ft.commit();
             }
         });
+
+
 
 
 
@@ -141,17 +152,26 @@ public class navigation_drawer extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_profile) {
-            Intent intent=new Intent(this,profile_activity.class);
-            startActivity(intent);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+            ft.replace(R.id.containHome, new profile_activity());
+
+            ft.commit();
             // Handle the camera action
 
         } else if (id == R.id.nav_developer) {
-            Intent developer = new Intent(this,Developer.class);
-            startActivity(developer);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+            ft.replace(R.id.containHome, new Developer());
+
+            ft.commit();
 
         }  else if (id == R.id.nav_contact) {
-            Intent contact = new Intent(this,Contact.class);
-            startActivity(contact);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+            ft.replace(R.id.containHome, new Contact());
+
+            ft.commit();
 
         } else if (id == R.id.nav_logout) {
             mFirebaseAuth.signOut();
