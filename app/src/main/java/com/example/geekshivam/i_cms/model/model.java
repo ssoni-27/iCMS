@@ -8,15 +8,11 @@ public class model {
     private int imageid;
     private String  name;
     private String email;
-    private String numbers;
-    private String desc;
 
-    public model(int imageid, String name, String email,String numbers, String desc) {
+    public model(int imageid, String name, String email) {
         this.imageid = imageid;
         this.name = name;
         this.email = email;
-        this.numbers = numbers;
-        this.desc = desc;
     }
 
     public int getImageid() {return imageid;}
@@ -37,21 +33,4 @@ public class model {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getnumbers() {
-        return numbers;
-    }
-
-    public void setNumbers(String email) {
-        this.numbers = numbers;
-    }
-    public String getdesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
 }

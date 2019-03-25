@@ -30,13 +30,10 @@ public class contact_us extends RecyclerView.Adapter<contact_us.Myholder> {
 
 private Context context;
 private ArrayList<model> modes;
-private ArrayList<model> number;
-    Activity activity;
 
     public contact_us(Context context, ArrayList<model> models) {
         this.context = context;
         this.modes = models;
-        this.number = number;
     }
 
     @Override
@@ -51,24 +48,6 @@ public Myholder onCreateViewHolder( ViewGroup parent, int viewType) {
         holder.pic.setImageResource(modes.get(position).getImageid());
         holder.name.setText(modes.get(position).getName());
         holder.email.setText(modes.get(position).getEmail());
-        holder.call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", String.valueOf(modes.get(position)), null));
-                activity.startActivity(intent);
-            }
-        });
-
-        holder.mail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_EMAIL, String.valueOf(modes.get(position)));
-                activity.startActivity(Intent.createChooser(intent, "Send Email"));
-            }
-        });
-
     }
 
 
@@ -82,17 +61,13 @@ public int getItemCount() {
     ImageView pic;
     TextView name;
     TextView email;
-   TextView desc;
             private ImageView call;
         private ImageView mail;
         public Myholder(View itemView) {
             super(itemView);
-            desc= (TextView) itemView.findViewById(R.id.desp);
             pic = (ImageView) itemView.findViewById(R.id.yoyo);
             name=(TextView) itemView.findViewById(R.id.tv_name);
             email=(TextView) itemView.findViewById(R.id.email);
-            call=(ImageView)itemView.findViewById(R.id.call);
-            mail=(ImageView)itemView.findViewById(R.id.mail);
 
         }
 

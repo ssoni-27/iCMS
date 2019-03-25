@@ -8,5 +8,5 @@
     tools:context="com.example.geekshivam.i_cms.Active_complaints"
         android:id="@+id/recycle"
         android:layout_marginTop="10dp"
-        android:background="@drawable/grid_layout">
+        android:background="@drawable/content_layout_design">
 </android.support.v7.widget.RecyclerView>

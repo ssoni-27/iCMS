@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class developer_list {
     public static ArrayList<model> getList(){
         ArrayList<model> modellist=new ArrayList<>();
-        modellist.add(new model(R.drawable.shivam,"Shivam Soni"," f20171238@pilani.bits-pilani.ac.in","7728850326","Student"));
-        modellist.add(new model(R.drawable.atul_sir,"Atul Runthala","atul.bitspilani@gmail.com","7728850326","Admin Nalanda"));
+        modellist.add(new model(R.drawable.shivam,"Shivam Soni"," f20171238@pilani.bits-pilani.ac.in"));
+        modellist.add(new model(R.drawable.atul_sir,"Atul Runthala","atul.bitspilani@gmail.com"));
         return modellist;
     }
 }

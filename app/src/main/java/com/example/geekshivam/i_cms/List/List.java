@@ -13,8 +13,8 @@ public class List {
 
     public static ArrayList<model> getList(){
         ArrayList<model> modellist=new ArrayList<>();
-        modellist.add(new model(R.drawable.yash_sir,"Dr. Yashvardhan Sharma"," yash@pilani.bits-pilani.ac.in","+91-1596-515467","Associate Professor Computer Science"));
-        modellist.add(new model(R.drawable.atul_sir,"Atul Runthala","atul.bitspilani@gmail.com","7728850326","Admin Nalanda"));
+        modellist.add(new model(R.drawable.yash_sir,"Dr. Yashvardhan Sharma"," yash@pilani.bits-pilani.ac.in"));
+        modellist.add(new model(R.drawable.atul_sir,"Atul Runthala","atul.bitspilani@gmail.com"));
         return modellist;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.geekshivam.i_cms.gridview1_new"
-    android:background="@drawable/grid_layout">
+    android:background="@drawable/content_layout_design">
     <LinearLayout
         android:id="@+id/fun"
         android:layout_width="350dp"

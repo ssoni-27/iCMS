@@ -30,7 +30,6 @@
         <activity android:name=".profile_activity" />
         <activity android:name=".Previous_complaints" />
         <activity android:name=".Developer" />
-        <activity android:name=".Settings" />
         <activity android:name=".gridview1_new" />
         <activity android:name=".Contact" />
         <activity android:name=".gridview_2" />
