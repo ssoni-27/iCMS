@@ -14,7 +14,8 @@ public class gridview_2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,Bundle savedInstanceState)
         {
-
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             return inflater.inflate(R.layout.activity_gridview_2 ,parent, false);
 
         }

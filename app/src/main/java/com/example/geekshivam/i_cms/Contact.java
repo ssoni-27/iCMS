@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,12 @@ public class  Contact extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup parent,Bundle savedInstanceState) {
+       Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
        return inflater.inflate(R.layout.activity_contact,parent,false);
 
 
@@ -39,6 +46,7 @@ public class  Contact extends Fragment {
     @Override
         public void onViewCreated (View view,Bundle savedInstanceState)
         {
+
             recyclerView = (RecyclerView)view.findViewById(R.id.contact_us);
             layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
             models = List.getList();
