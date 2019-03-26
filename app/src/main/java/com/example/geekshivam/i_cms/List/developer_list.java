@@ -12,8 +12,10 @@ import java.util.ArrayList;
 public class developer_list {
     public static ArrayList<model> getList(){
         ArrayList<model> modellist=new ArrayList<>();
-        modellist.add(new model(R.drawable.shivam,"Shivam Soni"," f20171238@pilani.bits-pilani.ac.in"));
-        modellist.add(new model(R.drawable.atul_sir,"Atul Runthala","atul.bitspilani@gmail.com"));
+        modellist.add(new model(R.drawable.shivam,"Shivam Soni"," f20171238@pilani.bits-pilani.ac.in","7728850326"));
+        modellist.add(new model(R.drawable.tnzl,"Tanzeel Ur Rahman","f20170836@pilani.bits-pilani.ac.in","9119225203"));
+        modellist.add(new model(R.drawable.dhruv,"Dhruv Singhal","f20170765@pilani.bits-pilani.ac.in","9971780889"));
+        modellist.add(new model(R.drawable.som_bhaiya,"Sombuddha Chakravarty","f2016165@pilani.bits-pilani.ac.in","8697394768"));
         return modellist;
     }
 }

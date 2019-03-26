@@ -48,6 +48,7 @@ public Myholder onCreateViewHolder( ViewGroup parent, int viewType) {
         holder.pic.setImageResource(modes.get(position).getImageid());
         holder.name.setText(modes.get(position).getName());
         holder.email.setText(modes.get(position).getEmail());
+        holder.number.setText(modes.get(position).getNumber());
     }
 
 
@@ -61,6 +62,7 @@ public int getItemCount() {
     ImageView pic;
     TextView name;
     TextView email;
+    TextView number;
             private ImageView call;
         private ImageView mail;
         public Myholder(View itemView) {
@@ -68,7 +70,7 @@ public int getItemCount() {
             pic = (ImageView) itemView.findViewById(R.id.yoyo);
             name=(TextView) itemView.findViewById(R.id.tv_name);
             email=(TextView) itemView.findViewById(R.id.email);
-
+            number=(TextView) itemView.findViewById(R.id.number);
         }
 
     }

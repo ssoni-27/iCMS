@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="25dp"
     android:id="@+id/contact_us"
     android:background="@drawable/content_layout_design"
     tools:context="com.example.geekshivam.i_cms.Contact">

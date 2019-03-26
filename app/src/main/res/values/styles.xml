@@ -54,21 +54,19 @@
         <item>Ready light not glowing</item>
         <item>No network connectivity</item>
         <item>CDE is down</item>
-        <item>other..</item>
+        <item>Others..(Description)</item>
 
     </string-array>
 
     <string-array name="c_sub_cat2">
 
-        <item>a</item>
-        <item>b</item>
+        <item>No wifi Connectivity</item>
+        <item>Authentication issue</item>
         <item>URL not opening</item>
+        <item>Suspected Block URL</item>
         <item>UPS Down</item>
-        <item>Network Switch Down</item>
-        <item>Ready light not glowing</item>
-        <item>No network connectivity</item>
-        <item>CDE is down</item>
-        <item>other..</item>
+        <item>Switch Down</item>
+        <item>Others..(Description)</item>
 
     </string-array>
 

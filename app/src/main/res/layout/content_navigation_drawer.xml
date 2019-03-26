@@ -47,14 +47,17 @@
             android:layout_height="0dp"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-
             android:layout_alignParentTop="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="35dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="25dp"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="10dp"
             app:cardElevation="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/grid_boundari"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -96,9 +99,12 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="25dp"
             android:gravity="center"
-
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="10dp"
             app:cardElevation="8dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/grid_boundari"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -145,8 +151,11 @@
         android:layout_below="@+id/grid_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="15dp"
-        android:background="@drawable/grid_layout"
         app:cardCornerRadius="25dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/grid_boundary"></LinearLayout>
 
         <TextView
             android:id="@+id/Activ"
@@ -170,7 +179,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:padding="6dp"
+            android:padding="16dp"
             android:src="@drawable/active" />
     </android.support.v7.widget.CardView>
 
