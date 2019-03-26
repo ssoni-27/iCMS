@@ -57,8 +57,10 @@ public class Developer extends RecyclerView.Adapter<contact_us.Myholder> {
 
         ImageView pic;
         TextView name;
+        TextView numbers;
         TextView email;
         TextView desc;
+
         private ImageView call;
         private ImageView mail;
         public Myholder(View itemView) {
@@ -67,6 +69,8 @@ public class Developer extends RecyclerView.Adapter<contact_us.Myholder> {
             name=(TextView) itemView.findViewById(R.id.name_developer);
             email=(TextView) itemView.findViewById(R.id.email_developer);
             mail=(ImageView)itemView.findViewById(R.id.email_developer);
+            numbers=(TextView) itemView.findViewById(R.id.number);
+
 
         }
 

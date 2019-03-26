@@ -159,7 +159,8 @@ public class navigation_drawer extends AppCompatActivity
             ft.commit();
             // Handle the camera action
 
-        } else if (id == R.id.nav_developer) {
+        }
+        else if (id == R.id.nav_developer) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
             ft.replace(R.id.containHome, new Developer());

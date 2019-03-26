@@ -8,11 +8,13 @@ public class model {
     private int imageid;
     private String  name;
     private String email;
+    private String number;
 
-    public model(int imageid, String name, String email) {
+    public model(int imageid, String name, String email, String number) {
         this.imageid = imageid;
         this.name = name;
         this.email = email;
+        this.number=number;
     }
 
     public int getImageid() {return imageid;}
@@ -31,6 +33,9 @@ public class model {
 
     public String getEmail() {
         return email;
+    }
+    public String getNumber(){
+        return number;
     }
 
 }

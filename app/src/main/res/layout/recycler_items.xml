@@ -11,13 +11,20 @@
             android:layout_height="match_parent"
             app:cardCornerRadius="15dp"
             android:background="@drawable/grid_layout">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_bug_report_black_24dp"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:id="@+id/icon" />
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/recycler_view">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_bug_report_black_24dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="13dp"
+                            android:paddingLeft="20dp"
+                            android:id="@+id/icon" />
+                </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

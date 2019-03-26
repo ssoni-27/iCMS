@@ -1,4 +1,6 @@
 package com.example.geekshivam.i_cms;
+import android.app.Dialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
 import android.app.DatePickerDialog;
@@ -16,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -29,14 +32,14 @@ public class gridview1_new extends Fragment  {
     Spinner spinner1, spinner2, spinner3;
     Button date, time1, time2, register;
     Calendar c;
-
+    TextView description;
+    Dialog myDialog;
     //Firebase Database
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
 
     //Complaint object
     Complaint complaint_obj;
-
     //date
 
 
@@ -52,7 +55,19 @@ public class gridview1_new extends Fragment  {
         //Firebase reference initialise
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getInstance().getReference();
+    //
+        //dialog
 
+        description = (TextView) view.findViewById(R.id.description);
+        description.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              //  final Dialog fbDialogue = new Dialog(gridview1_new.this, android.R.style.Theme_Black_NoTitleBar);
+              //  fbDialogue.setContentView(R.layout.description_adding);
+              //  fbDialogue.setCancelable(true);
+             //   fbDialogue.show();
+            }
+        });
         //current time1
         time1 = (Button) view.findViewById(R.id.time);
         time2 = (Button) view.findViewById(R.id.time2);
@@ -84,7 +99,7 @@ public class gridview1_new extends Fragment  {
             @Override
             public void onClick(View v) {
 
-                //TODO:Complaint properly.
+                //Complaint properly.
                 complaint_obj = new Complaint(spinner1.getTransitionName(), spinner2.getTransitionName(), "Description not added yet.", spinner3.getTransitionName(), 123, "to be done", "to be done");
 
                 register_complaint(mDatabaseReference, complaint_obj);
