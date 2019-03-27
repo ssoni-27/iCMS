@@ -87,16 +87,7 @@ public class gridview1_new extends Fragment  {
     //
         //dialog
 
-        description = (TextView) view.findViewById(R.id.description);
-        description.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              //  final Dialog fbDialogue = new Dialog(gridview1_new.this, android.R.style.Theme_Black_NoTitleBar);
-              //  fbDialogue.setContentView(R.layout.description_adding);
-              //  fbDialogue.setCancelable(true);
-             //   fbDialogue.show();
-            }
-        });
+      
         //current time1
         time1 = (Button) view.findViewById(R.id.time);
         time2 = (Button) view.findViewById(R.id.time2);
