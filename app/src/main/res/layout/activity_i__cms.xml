@@ -7,91 +7,53 @@
     android:background="@color/colorPrimaryDark"
     android:focusableInTouchMode="true"
     tools:context=".i_CMS">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign direct through BITS mail."
+        android:gravity_layout="center_horizontal|center"
+        android:layout_marginTop="450dp"
+        android:textColor="@color/Black"
+        android:padding="15dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:layout_marginLeft="75dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="350dp"
         android:background="#2D89E5">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="120dp"
             android:layout_marginLeft="80dp"
             android:src="@drawable/bitspilani"/>
     </LinearLayout>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="100dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/circle"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="320dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        app:cardCornerRadius="25dp">
+        android:layout_marginRight="25dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/ial"
+            android:layout_gravity="bottom"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
             android:paddingLeft="32dp"
             android:paddingRight="32dp">
-
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
-                android:orientation="vertical"
-                android:textColorHint="@color/Black"
-                android:theme="@style/EditScreenTextInputLayoutStyle">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/Blue" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/colorPrimaryDark"
-                    android:drawableRight="@drawable/ic_email_white_24dp"
-                    android:fontFamily="@font/calibri"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:paddingLeft="16dp"
-                    android:textColor="@color/Black"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:textColorHint="@color/Black"
-                android:theme="@style/EditScreenTextInputLayoutStyle">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/Blue" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/ic_lock_white_24dp"
-                    android:fontFamily="@font/calibri"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:paddingLeft="15dp"
-                    android:textColor="@color/Black"
-                    android:textSize="16sp" />
-            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,11 +65,8 @@
                     android:id="@+id/google_SignIn_Btn"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="64dp"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_vertical"
                     android:elevation="8dp"
                     app:backgroundTint="@android:color/white"
                     app:srcCompat="@drawable/ic_google" />
@@ -117,6 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/background_new"
                     android:fontFamily="@font/calibri"
                     android:text="Sign in"
@@ -161,6 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
+            android:layout_marginTop="70dp"
             android:orientation="vertical">
 
             <TextView
@@ -185,13 +146,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/calibri"
+        android:layout_marginTop="230dp"
+        android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
+        android:padding="15dp"
         android:textStyle="bold"
-        android:text="We pursue a relaxed computering experience"
+        android:text="We pursue a relaxed computering experience."
         android:textColor="#9affffff"
         android:textSize="15sp" />
 </RelativeLayout>

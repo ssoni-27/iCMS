@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginTop="100dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginRight="0dp">
             <ImageView
                 android:layout_width="36dp"
@@ -65,6 +65,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="2dp"
+                android:padding="5dp"
                 android:fontFamily="@font/montserrat_regular"
                 android:layout_gravity="center_vertical"
                 android:text="f20171238@pilani.bits-pilani.ac.in"

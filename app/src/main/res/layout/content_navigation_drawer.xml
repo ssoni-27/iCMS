@@ -78,9 +78,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="138dp"
-                android:fontFamily="@font/calibri"
+                android:layout_marginTop="133dp"
+                android:fontFamily="@font/montserrat_regular"
                 android:padding="2dp"
+                android:textSize="13dp"
                 android:gravity="center_horizontal"
                 android:text="Add Complaints"
                 android:textColor="@color/Black" />
@@ -126,13 +127,13 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="170dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="2dp"
+               android:gravity="center"
                 android:layout_marginTop="135dp"
-                android:gravity="center"
-                android:padding="2dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="13dp"
                 android:text="Previous Complaints"
                 android:textColor="@color/Black" />
         </android.support.v7.widget.CardView>
