@@ -28,6 +28,7 @@ public class  Contact extends Fragment {
     ArrayList<model> models;
     RecyclerView recyclerView;
     contact_us contact;
+    Fragment mContent;
 
 
     @Override
@@ -45,6 +46,9 @@ public class  Contact extends Fragment {
                        Intent i=new Intent(getActivity().getApplicationContext(),navigation_drawer.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                        startActivity(i);
+
+
+
 
 
 
@@ -73,6 +77,10 @@ public class  Contact extends Fragment {
 
 
         }
+
+
+
+
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.geekshivam.i_cms;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
@@ -19,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -35,6 +37,8 @@ public class gridview1_new extends Fragment  {
     MySQLiteOpenHelper myDB;
 
     final String TAG="iCMS";
+    int networktypeflag;
+    String descriptiontext;
 
     Spinner spinner1, spinner2, spinner3;
     Button date, time1, time2, register;
@@ -86,7 +90,7 @@ public class gridview1_new extends Fragment  {
         mDatabaseReference = mFirebaseDatabase.getInstance().getReference();
     //
         //dialog
-
+        networktypeflag=0;
       
         //current time1
         time1 = (Button) view.findViewById(R.id.time);
@@ -162,7 +166,7 @@ public class gridview1_new extends Fragment  {
                 {
 
                 if (pos== 2)
-                {
+                {   networktypeflag=1;
                     ArrayAdapter<String> array23 = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.c_sub_cat2));
                     array23.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -171,6 +175,7 @@ public class gridview1_new extends Fragment  {
 
 
                     else {
+                        networktypeflag=0;
                     ArrayAdapter<String> array2 = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.c_sub_cat));
                     array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -189,10 +194,103 @@ public class gridview1_new extends Fragment  {
                 });
 
 
+        spinner2.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view,int pos, long id)
+                    {
+
+                        if (networktypeflag==1&&pos==6)
+                        {
+                            final Dialog dialog = new Dialog(gridview1_new.this.getContext());
+                            // Include dialog.xml file
+                            dialog.setContentView(R.layout.description_adding);
+                            // Set dialog title
+                            dialog.setTitle("Description Dialog");
+
+                            dialog.show();
+                            final TextView description=dialog.findViewById(R.id.description);
+                            Button submit=dialog.findViewById(R.id.done);
+
+                            submit.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    // Close dialog
+                                    dialog.dismiss();
+                                }
+                            });
+                           EditText declineButton =dialog.findViewById(R.id.cross);
+                            // if decline button is clicked, close the custom dialog
+                            declineButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    descriptiontext=(description.getText()).toString();
+                                    // Close dialog
+                                    dialog.dismiss();
+                                }
+                            });
 
 
 
-            ArrayAdapter<String> array = new ArrayAdapter<String>(getActivity().getApplicationContext(),
+
+
+                        }
+
+
+                        else if(networktypeflag==0&&pos==9)
+                        {
+                            final Dialog dialog = new Dialog(gridview1_new.this.getContext());
+                            // Include dialog.xml file
+                            dialog.setContentView(R.layout.description_adding);
+                            // Set dialog title
+                            dialog.setTitle("Description Dialog");
+
+                            dialog.show();
+                          final EditText description=dialog.findViewById(R.id.description);
+                            Button submit=dialog.findViewById(R.id.done);
+
+                            submit.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    // Close dialog
+                                    dialog.dismiss();
+                                }
+                            });
+                            TextView declineButton =dialog.findViewById(R.id.cross);
+                            // if decline button is clicked, close the custom dialog
+                            declineButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    descriptiontext=(description.getText()).toString();
+                                    // Close dialog
+                                    dialog.dismiss();
+                                }
+                            });
+
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent)
+                    {
+
+                    }
+                });
+
+
+
+
+
+
+        ArrayAdapter<String> array = new ArrayAdapter<String>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Bhawan));
         array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(array);
