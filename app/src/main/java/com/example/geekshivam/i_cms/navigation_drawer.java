@@ -77,10 +77,10 @@ public class navigation_drawer extends AppCompatActivity
         setSupportActionBar(toolbar);
         //TODO:undo comment
         //get display name
-        if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
+     //   if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
 //            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
-            email = mFirebaseAuth.getCurrentUser().getEmail();
-        }
+    //        email = mFirebaseAuth.getCurrentUser().getEmail();
+     //   }
 
 
         //gridView
