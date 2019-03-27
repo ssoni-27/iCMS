@@ -7,13 +7,20 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class Active_complaints extends Fragment {
 
+    MySQLiteOpenHelper myDB;
 
+    public void setDataFromActivity(MySQLiteOpenHelper a)
+    {
+        myDB=a;
+        Log.d("iCMS","myDB passed");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState)
@@ -47,10 +54,10 @@ public class Active_complaints extends Fragment {
 
         RecyclerView recyclerView=(RecyclerView) view.findViewById(R.id.recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        String[] z= {"complaint1","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2"
-                ,"Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2"};
-        recyclerView.setAdapter(new recyclerview(z));
-
+        if(myDB!=null)
+        {
+            recyclerView.setAdapter(new recyclerview(getContext(),myDB.getAllData()));
+        }
 
     }
 

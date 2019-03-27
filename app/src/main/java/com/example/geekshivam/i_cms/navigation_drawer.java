@@ -29,14 +29,16 @@ public class navigation_drawer extends AppCompatActivity
 
     public static String currentFragment="";
 
+    public MySQLiteOpenHelper myDB;
+
     CardView a;
     CardView b;
     CardView c;
-    Button logout_Btn;
-    TextView displayName_TV;
     TextView header_name;
+    TextView header_email;
 
-    String displayName="";
+
+    String displayName="Anonymous",email="";
 
     //Firebase Objects
     FirebaseAuth mFirebaseAuth=FirebaseAuth.getInstance();;
@@ -69,21 +71,30 @@ public class navigation_drawer extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
 
+        myDB=new MySQLiteOpenHelper(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //TODO:undo comment
         //get display name
-//        if(mFirebaseAuth.getCurrentUser().getEmail()!=null)
+        if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
 //            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
+            email = mFirebaseAuth.getCurrentUser().getEmail();
+        }
+
 
         //gridView
         a=findViewById(R.id.new1);
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gridview1_new g=new gridview1_new();
+
+                g.setDataFromActivity(myDB);
+
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-                ft.replace(R.id.containHome, new gridview1_new());
+                ft.replace(R.id.containHome, g);
 
                 ft.commit();
             }
@@ -93,8 +104,9 @@ public class navigation_drawer extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
-                ft.replace(R.id.containHome, new gridview_2());
+                gridview_2 gv2=new gridview_2();
+                gv2.setDataFromActivity(myDB);
+                ft.replace(R.id.containHome,gv2);
 
                 ft.commit();
             }
@@ -104,8 +116,10 @@ public class navigation_drawer extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                Active_complaints ac1=new Active_complaints();
+                ac1.setDataFromActivity(myDB);
 
-                ft.replace(R.id.containHome, new Active_complaints());
+                ft.replace(R.id.containHome, ac1);
 
                 ft.commit();
             }
@@ -120,8 +134,12 @@ public class navigation_drawer extends AppCompatActivity
 //        displayName_TV=(TextView) findViewById(R.id.displayName_TextView);
 //        displayName_TV.setText(displayName);
 
-        //header_name=(TextView)findViewById(R.id.header_name);
+
+        header_name=(TextView)findViewById(R.id.header_name);
         //header_name.setText(displayName);
+
+        header_email=(TextView)findViewById(R.id.header_email) ;
+        //header_email.setText(email);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iCMS.iml" filepath="$PROJECT_DIR$/iCMS.iml" />
       <module fileurl="file://$PROJECT_DIR$/iCMS.iml" filepath="$PROJECT_DIR$/iCMS.iml" />
       <module fileurl="file://F:/movies/iCMS/i_CMS.iml" filepath="F:/movies/iCMS/i_CMS.iml" />
     </modules>

@@ -31,7 +31,7 @@
                     android:layout_weight="1"
                     android:textSize="24sp"
                     android:fontFamily="@font/calibri"
-                    android:text="List Item"
+                    android:hint="list view"
                     android:layout_gravity="center"
                     android:paddingLeft="32dp"
                     android:id="@+id/abc"/>

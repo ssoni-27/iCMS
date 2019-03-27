@@ -13,6 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class gridview_2 extends Fragment {
+
+    MySQLiteOpenHelper myDB;
+
+    public void setDataFromActivity(MySQLiteOpenHelper a)
+    {
+        myDB=a;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,Bundle savedInstanceState)
         {
@@ -43,10 +51,8 @@ public class gridview_2 extends Fragment {
                 public void onViewCreated(View view,Bundle savedInstanceState)
         {
 
-        RecyclerView recyclerView=(RecyclerView) view.findViewById(R.id.recycle);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        String[] z= {"complaint1","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2"
-                ,"Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2","Complaint2"};
-        recyclerView.setAdapter(new recyclerview(z));
+            RecyclerView recyclerView=(RecyclerView) view.findViewById(R.id.recycle);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+            recyclerView.setAdapter(new recyclerview(getContext(),myDB.getAllData()));
         }
 }

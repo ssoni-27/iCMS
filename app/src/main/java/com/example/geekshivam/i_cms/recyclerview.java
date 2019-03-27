@@ -1,5 +1,7 @@
 package com.example.geekshivam.i_cms;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,10 +18,18 @@ import java.awt.font.TextAttribute;
  */
 
 public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingViewHolder> {
+
     private String[] data;
-    public recyclerview(String[] data){
-         this.data = data;
+    private Context mContext;
+    private Cursor mCursor;
+
+    public recyclerview(Context context,Cursor cursor)
+    {
+        mContext=context;
+        mCursor=cursor;
+
     }
+
     @NonNull
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,22 +40,30 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
 
     @Override
     public void onBindViewHolder(ProgrammingViewHolder holder, int position) {
-        String title =data[position];
+
+        if(!mCursor.move(position))
+        {
+            return;
+        }
+
+        String title =mCursor.getString(4)+":"+mCursor.getString(5);
         holder.textView.setText(title);
 
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return mCursor.getCount();
 
     }
 
     public class ProgrammingViewHolder extends RecyclerView.ViewHolder{
         ImageView imageicon;
         TextView textView;
+
         public ProgrammingViewHolder(View itemview){
             super(itemview);
+
             imageicon=(ImageView) itemview.findViewById(R.id.icon);
             textView=(TextView) itemview.findViewById(R.id.abc);
         }

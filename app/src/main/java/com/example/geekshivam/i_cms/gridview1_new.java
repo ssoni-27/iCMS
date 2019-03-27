@@ -11,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,11 @@ import java.text.DateFormat;
 import java.util.Calendar;
 
 public class gridview1_new extends Fragment  {
+
+    MySQLiteOpenHelper myDB;
+
+    final String TAG="iCMS";
+
     Spinner spinner1, spinner2, spinner3;
     Button date, time1, time2, register;
     Calendar c;
@@ -43,7 +49,11 @@ public class gridview1_new extends Fragment  {
     Complaint complaint_obj;
     //date
 
-
+    public void setDataFromActivity(MySQLiteOpenHelper msloh)
+    {
+        myDB=msloh;
+        Log.d(TAG,"setDatafromActivity.");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -119,7 +129,14 @@ public class gridview1_new extends Fragment  {
             public void onClick(View v) {
 
                 //Complaint properly.
-                complaint_obj = new Complaint(spinner1.getTransitionName(), spinner2.getTransitionName(), "Description not added yet.", spinner3.getTransitionName(), 123, "to be done", "to be done");
+                complaint_obj = new Complaint(
+                        spinner1.getSelectedItem().toString(),
+                        spinner2.getSelectedItem().toString(),
+                        "Description not added yet.",
+                        spinner3.getSelectedItem().toString(),
+                        123,
+                        date.getText().toString(),
+                        time1.getText().toString()+" to "+time2.getText().toString());
 
                 register_complaint(mDatabaseReference, complaint_obj);
                 Toast.makeText(getActivity().getApplicationContext(), "Your complaint is registered.", Toast.LENGTH_SHORT).show();
@@ -199,10 +216,13 @@ public class gridview1_new extends Fragment  {
 
     //register complaint and return success status.
     public boolean register_complaint(DatabaseReference m, Complaint c) {
+
         m.child("Complaints").push().setValue(c);
 
-        //TODO:check weather value added properly.
-        return true;
+        //Add data to local database and result.
+        boolean result= myDB.insertData_to_localDatabase(c);
+
+        return result;
     }
 }
 
