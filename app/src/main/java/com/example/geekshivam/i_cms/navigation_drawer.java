@@ -1,12 +1,15 @@
 package com.example.geekshivam.i_cms;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,57 +34,55 @@ public class navigation_drawer extends AppCompatActivity
 
     public MySQLiteOpenHelper myDB;
 
+    final String preference="iCMSpreferences";
+    final String userNamekey="userName";
+    final String userEmailkey="userEmail";
+
     CardView a;
     CardView b;
     CardView c;
     TextView header_name;
     TextView header_email;
 
-
-    String displayName="Anonymous",email="";
+    //Header information
+    String userName="Anonymous";
+    String userEmail="";
 
     //Firebase Objects
-    FirebaseAuth mFirebaseAuth=FirebaseAuth.getInstance();;
+    FirebaseAuth mFirebaseAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        mAuthStateListener=new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+        mFirebaseAuth=FirebaseAuth.getInstance();
 
-                if(firebaseAuth.getCurrentUser()==null)
-                {
-                    //TODO: undo  this
-                    //startActivity(new Intent(navigation_drawer.this,i_CMS.class));
-                }
-            }
-        };
-
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+//        mAuthStateListener=new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//
+//                if(firebaseAuth.getCurrentUser()==null)
+//                {
+//                    //TODO: undo  this
+//                    //startActivity(new Intent(navigation_drawer.this,i_CMS.class));
+//                }
+//            }
+//        };
+//
+//        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
 
+        //Create SQL database access instance.
         myDB=new MySQLiteOpenHelper(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //TODO:undo comment
-        //get display name
-        if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
-//            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
-            email = mFirebaseAuth.getCurrentUser().getEmail();
-        }
-
 
         //gridView
         a=findViewById(R.id.new1);
@@ -125,22 +126,6 @@ public class navigation_drawer extends AppCompatActivity
             }
         });
 
-
-
-
-
-        //TODO:undo comment.
-        //Display name text view
-//        displayName_TV=(TextView) findViewById(R.id.displayName_TextView);
-//        displayName_TV.setText(displayName);
-
-
-        header_name=(TextView)findViewById(R.id.header_name);
-        //header_name.setText(displayName);
-
-        header_email=(TextView)findViewById(R.id.header_email) ;
-        //header_email.setText(email);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -149,8 +134,52 @@ public class navigation_drawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getUserDetail();
+
+        header_name=(TextView)findViewById(R.id.header_name);
+        header_name.setText(userName);
+
+        header_email=(TextView)findViewById(R.id.header_email) ;
+        header_email.setText(userEmail);
+
     }
 
+    public void getUserDetail()
+    {
+        SharedPreferences sp=getSharedPreferences(preference, Context.MODE_PRIVATE);
+        if(sp.contains(userNamekey)&&sp.contains(userEmailkey))
+        {
+            userEmail=sp.getString(userEmailkey,"");
+            userName=sp.getString(userNamekey,"Anonymous");
+
+            if(userName!="Anonymous" && userEmail!="")return;
+        }
+
+        //if user info not in shared preferences
+        try
+        {
+            if(mFirebaseAuth.getCurrentUser()!=null) {
+                userName = mFirebaseAuth.getCurrentUser().getDisplayName();
+                userEmail = mFirebaseAuth.getCurrentUser().getEmail();
+
+                //TODO:Logout if not bits email
+
+                //Add user info to shared preferences.
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putString(userNamekey,userName);
+                editor.putString(userEmailkey,userEmail);
+                editor.commit();
+
+            }
+        }
+        catch (Exception e)
+        {
+            //TODO:task if user not found.
+            Log.d("iCMS","Unable to get username email.Error:"+e);
+
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -193,12 +222,26 @@ public class navigation_drawer extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_logout) {
-            mFirebaseAuth.signOut();
+            logout();
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void logout()
+    {
+        //clear shared preferences
+        SharedPreferences sp=getSharedPreferences(preference,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
+        editor.remove(userNamekey);
+        editor.remove(userEmailkey);
+        editor.commit();
+
+        //TODO:clear database
+
+        mFirebaseAuth.signOut();
     }
 }
