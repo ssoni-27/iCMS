@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:background="@color/colorPrimaryDark"
     android:focusableInTouchMode="true"
     tools:context=".i_CMS">
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign direct through BITS mail."
-        android:gravity_layout="center_horizontal|center"
+        android:gravity="center"
         android:layout_marginTop="450dp"
         android:textColor="@color/Black"
         android:padding="15dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:layout_marginLeft="75dp"/>
+        android:fontFamily="@font/montserrat_regular" />
 
     <LinearLayout
         android:layout_width="match_parent"

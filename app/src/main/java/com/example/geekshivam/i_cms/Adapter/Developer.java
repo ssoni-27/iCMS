@@ -68,7 +68,7 @@ public class Developer extends RecyclerView.Adapter<contact_us.Myholder> {
             pic = (ImageView) itemView.findViewById(R.id.image_develop);
             name=(TextView) itemView.findViewById(R.id.name_developer);
             email=(TextView) itemView.findViewById(R.id.email_developer);
-            mail=(ImageView)itemView.findViewById(R.id.email_developer);
+
             numbers=(TextView) itemView.findViewById(R.id.number);
 
 

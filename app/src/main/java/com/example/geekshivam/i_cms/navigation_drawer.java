@@ -73,6 +73,9 @@ public class navigation_drawer extends AppCompatActivity
 //        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +86,13 @@ public class navigation_drawer extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //TODO:undo comment
+        //get display name
+       // if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
+//            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
+       //     email = mFirebaseAuth.getCurrentUser().getEmail();
+        //}
+
 
         //gridView
         a=findViewById(R.id.new1);
@@ -126,6 +136,11 @@ public class navigation_drawer extends AppCompatActivity
             }
         });
 
+
+
+
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -134,13 +149,17 @@ public class navigation_drawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
+
+
 
         getUserDetail();
 
-        header_name=(TextView)findViewById(R.id.header_name);
+        header_name=(TextView)headerView.findViewById(R.id.header_name);
         header_name.setText(userName);
 
-        header_email=(TextView)findViewById(R.id.header_email) ;
+        header_email=(TextView)headerView.findViewById(R.id.header_email) ;
         header_email.setText(userEmail);
 
     }

@@ -60,13 +60,12 @@ public class Developer extends Fragment {
     public void onViewCreated(View view,Bundle savedInstanceState)
     {
 
-
         recyclerView=(RecyclerView)view.findViewById(R.id.developer_recycle);
         layoutManager=new LinearLayoutManager(getActivity().getApplicationContext());
         models= developer_list.getList();
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        contact = new contact_us(getActivity().getApplicationContext(),models);
+        contact= new contact_us(getActivity().getApplicationContext(),models);
         recyclerView.setAdapter(contact);
     }
 }
