@@ -77,10 +77,10 @@ public class i_CMS extends AppCompatActivity {
                 .build();
 
         // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(i_CMS.this, gso);
+   //     mGoogleSignInClient = GoogleSignIn.getClient(i_CMS.this, gso);
 
         sign= (Button) findViewById(R.id.sign);
-        //Intent intent = new Intent(i_CMS.this, navigation_drawer.class);
+        Intent intent = new Intent(i_CMS.this, navigation_drawer.class);
 
         sign.setOnClickListener(new View.OnClickListener() {
             @Override

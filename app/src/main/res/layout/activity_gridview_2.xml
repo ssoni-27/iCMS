@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/recycle"
-
-    android:background="@drawable/content_layout_design"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.example.geekshivam.i_cms.gridview_2">
 
 </android.support.v7.widget.RecyclerView>

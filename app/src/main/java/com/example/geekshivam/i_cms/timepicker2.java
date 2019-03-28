@@ -25,7 +25,7 @@ public class timepicker2 extends DialogFragment implements TimePickerDialog.OnTi
         int hour=calendar.get(Calendar.HOUR_OF_DAY);
         int min=calendar.get(Calendar.MINUTE);
         time1=getActivity().findViewById(R.id.time2);
-        return new TimePickerDialog(getActivity(),this,hour,min, DateFormat.is24HourFormat(getActivity()));
+        return new TimePickerDialog(getActivity(),R.style.MyTimePickerDialogStyle,this,hour,min, DateFormat.is24HourFormat(getActivity()));
 
     }
 
