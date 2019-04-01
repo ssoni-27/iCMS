@@ -32,7 +32,7 @@
         android:textStyle="bold"
         android:layout_marginTop="-10dp"
         android:fontFamily="@font/montserrat_regular"
-        android:text="Name"
+        android:hint="Name"
         android:layout_gravity="center" />
 
     <TextView
@@ -41,6 +41,6 @@
         android:layout_width="wrap_content"
 android:fontFamily="@font/montserrat_regular"
         android:layout_height="wrap_content"
-        android:text="Email@bits-pilani.ac.in" />
+        android:hint="Email@bits-pilani.ac.in" />
 
 </LinearLayout>

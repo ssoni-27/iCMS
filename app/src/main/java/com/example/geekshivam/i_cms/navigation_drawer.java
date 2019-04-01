@@ -3,6 +3,7 @@ package com.example.geekshivam.i_cms;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -27,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import android.app.Fragment;
 import android.app.FragmentManager;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,10 +46,12 @@ public class navigation_drawer extends AppCompatActivity
     CardView c;
     TextView header_name;
     TextView header_email;
+    CircleImageView header_image;
 
     //Header information
     String userName="Anonymous";
     String userEmail="";
+    Uri userPhotoUri;
 
     //Firebase Objects
     FirebaseAuth mFirebaseAuth;
@@ -56,7 +61,6 @@ public class navigation_drawer extends AppCompatActivity
     protected void onStart() {
         super.onStart();
 
-        mFirebaseAuth=FirebaseAuth.getInstance();
 
 //        mAuthStateListener=new FirebaseAuth.AuthStateListener() {
 //            @Override
@@ -80,6 +84,8 @@ public class navigation_drawer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+
+        mFirebaseAuth=FirebaseAuth.getInstance();
 
         //Create SQL database access instance.
         myDB=new MySQLiteOpenHelper(this);
@@ -162,18 +168,31 @@ public class navigation_drawer extends AppCompatActivity
         header_email=(TextView)headerView.findViewById(R.id.header_email) ;
         header_email.setText(userEmail);
 
+        header_image=(CircleImageView)headerView.findViewById(R.id.header_imageView);
+        header_image.setImageURI(userPhotoUri);
+
     }
 
     public void getUserDetail()
     {
         SharedPreferences sp=getSharedPreferences(preference, Context.MODE_PRIVATE);
+
         if(sp.contains(userNamekey)&&sp.contains(userEmailkey))
         {
             userEmail=sp.getString(userEmailkey,"");
             userName=sp.getString(userNamekey,"Anonymous");
 
-            if(userName!="Anonymous" && userEmail!="")return;
+            //TODO:save photo in internal memory and shift command below with get email and name command
+            userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
+
+
+            if(userName!="Anonymous" && userEmail!="")
+                return;
         }
+
+        //TODO:save photo in internal memory and shift command below with get email and name command
+        userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
+
 
         //if user info not in shared preferences
         try
@@ -181,6 +200,7 @@ public class navigation_drawer extends AppCompatActivity
             if(mFirebaseAuth.getCurrentUser()!=null) {
                 userName = mFirebaseAuth.getCurrentUser().getDisplayName();
                 userEmail = mFirebaseAuth.getCurrentUser().getEmail();
+                //userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
 
                 //TODO:Logout if not bits email
 

@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "662113497142",
-    "firebase_url":  "https://try-icms-b93e7.firebaseio.com",
-    "project_id": "try-icms-b93e7",
-    "storage_bucket": "try-icms-b93e7.appspot.com"
+    "project_number": "794990523230",
+    "firebase_url": "https://icms-7b3db.firebaseio.com",
+    "project_id": "icms-7b3db",
+    "storage_bucket": "icms-7b3db.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:662113497142:android:a0aa911a86daac98",
+        "mobilesdk_app_id": "1:794990523230:android:a0aa911a86daac98",
         "android_client_info": {
           "package_name": "com.example.geekshivam.i_cms"
         }
       },
       "oauth_client": [
         {
-          "client_id": "662113497142-e36b6pa16eecgv6eb6umi6ipqc2he6mi.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.geekshivam.i_cms",
-            "certificate_hash": "6db723670be0a5954ae1d87e4da5c1d043cc3201"
-          }
-        },
-        {
-          "client_id": "662113497142-f8su9kgbl306jhb6kcjude74ijd2nbo6.apps.googleusercontent.com",
+          "client_id": "794990523230-es8oo9uksplm0av7m8umk5de21s66rgk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBteuEI56xzO1mOQGZXEjMgru0RZsfc-cU"
+          "current_key": "AIzaSyCSmIx0HFtkCTX3o_LwRWqfEQcgolMHm2s"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "662113497142-f8su9kgbl306jhb6kcjude74ijd2nbo6.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

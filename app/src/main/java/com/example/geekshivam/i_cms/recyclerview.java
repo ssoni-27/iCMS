@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
     private String[] data;
     private Context mContext;
     private Cursor mCursor;
+
 
     public recyclerview(Context context,Cursor cursor)
     {
@@ -47,6 +49,7 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
         }
 
         String title =mCursor.getString(4)+":"+mCursor.getString(5);
+        Log.d("iCMS",title);
         holder.textView.setText(title);
 
     }

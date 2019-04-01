@@ -1,6 +1,7 @@
 package com.example.geekshivam.i_cms;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 public class gridview_2 extends Fragment {
 
     MySQLiteOpenHelper myDB;
+    String query_previous="SELECT * FROM complaint_list WHERE STATUS='false'";
+    private static String table_name="complaint_list";
 
     public void setDataFromActivity(MySQLiteOpenHelper a)
     {
@@ -36,9 +39,6 @@ public class gridview_2 extends Fragment {
                             Intent i=new Intent(getActivity().getApplicationContext(),navigation_drawer.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(i);
-
-
-
                         }
                     }
 
@@ -53,6 +53,10 @@ public class gridview_2 extends Fragment {
 
             RecyclerView recyclerView=(RecyclerView) view.findViewById(R.id.recycle);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-            recyclerView.setAdapter(new recyclerview(getContext(),myDB.getAllData()));
+
+            Cursor cursor=myDB.getReadableDatabase().rawQuery(query_previous,null);
+            recyclerView.setAdapter(new recyclerview(getContext(),cursor));
+
+            //recyclerView.setAdapter(new recyclerview(getContext(),myDB.getAllData()));
         }
 }

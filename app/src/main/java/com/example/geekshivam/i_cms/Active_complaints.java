@@ -1,6 +1,7 @@
 package com.example.geekshivam.i_cms;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import android.view.ViewGroup;
 public class Active_complaints extends Fragment {
 
     MySQLiteOpenHelper myDB;
+    String query_previous="SELECT * FROM complaint_list WHERE STATUS='true'";
+    private static String table_name="complaint_list";
+
 
     public void setDataFromActivity(MySQLiteOpenHelper a)
     {
@@ -56,7 +60,9 @@ public class Active_complaints extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         if(myDB!=null)
         {
-            recyclerView.setAdapter(new recyclerview(getContext(),myDB.getAllData()));
+            Cursor res=myDB.getReadableDatabase().rawQuery(query_previous,null);
+
+            recyclerView.setAdapter(new recyclerview(getContext(),res));
         }
 
     }

@@ -82,7 +82,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         contentValues.put(COL_8, complaint.getPhoneNo());
         contentValues.put(COL_9, complaint.getAvailable_date());
         contentValues.put(COL_10, complaint.getAvailabletime());
-        contentValues.put(COL_11, complaint.getStatus());
+        contentValues.put(COL_11, complaint.getStatus().toString());
 
         long result = db.insert(table_name, null, contentValues);
 
