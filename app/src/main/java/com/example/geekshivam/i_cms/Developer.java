@@ -1,6 +1,7 @@
 package com.example.geekshivam.i_cms;
 
 import android.content.Intent;
+import android.support.transition.Visibility;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.geekshivam.i_cms.Adapter.contact_us;
 import com.example.geekshivam.i_cms.List.List;
@@ -18,6 +20,8 @@ import com.example.geekshivam.i_cms.List.developer_list;
 import com.example.geekshivam.i_cms.model.model;
 
 import java.util.ArrayList;
+
+import static android.view.View.INVISIBLE;
 
 public class Developer extends Fragment {
 
@@ -33,6 +37,7 @@ public class Developer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
@@ -61,6 +66,7 @@ public class Developer extends Fragment {
     {
 
         recyclerView=(RecyclerView)view.findViewById(R.id.developer_recycle);
+
         layoutManager=new LinearLayoutManager(getActivity().getApplicationContext());
         models= developer_list.getList();
         recyclerView.setLayoutManager(layoutManager);
