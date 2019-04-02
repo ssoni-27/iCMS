@@ -29,7 +29,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class i_CMS extends AppCompatActivity {
 
-    private final static String TAG="iCMS";
+    private final static String TAG="onstar";
     private final static int RC_SIGN_IN=1234;
 
     Button sign;
