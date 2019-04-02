@@ -1,6 +1,8 @@
 package com.example.geekshivam.i_cms;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 
@@ -26,15 +28,20 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Calendar;
 
 public class gridview1_new extends Fragment  {
 
     MySQLiteOpenHelper myDB;
+    String email;
 
     final String TAG="iCMS";
     int networktypeflag;
@@ -53,9 +60,10 @@ public class gridview1_new extends Fragment  {
     Complaint complaint_obj;
     //date
 
-    public void setDataFromActivity(MySQLiteOpenHelper msloh)
+    public void setDataFromActivity(MySQLiteOpenHelper msloh,String e)
     {
         myDB=msloh;
+        email=e;
         Log.d(TAG,"setDatafromActivity.");
     }
 
@@ -306,10 +314,48 @@ public class gridview1_new extends Fragment  {
     //register complaint and return success status.
     public boolean register_complaint(DatabaseReference m, Complaint c) {
 
-        m.child("Complaints").push().setValue(c);
+        String timestamp=new Timestamp(System.currentTimeMillis()).toString();
+        String key=email.substring(0,9)+
+                timestamp.substring(0,4)+
+                timestamp.substring(5,7)+
+                timestamp.substring(8,10)+
+                timestamp.substring(11,13)+
+                timestamp.substring(14,16)+
+                timestamp.substring(17,19)+
+                timestamp.substring(20,22);
+
+        Log.d("iCMS","Complaint firebase key:"+key);
+        m.child("Complaints").child(key).setValue(c);
 
         //Add data to local database and result.
         boolean result= myDB.insertData_to_localDatabase(c);
+
+        FirebaseDatabase.getInstance().getReference().child("Complaints").orderByKey().equalTo(key).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Log.d("iCMS",dataSnapshot.getValue(Complaint.class).getIssue());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         return result;
     }

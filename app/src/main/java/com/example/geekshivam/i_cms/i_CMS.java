@@ -80,7 +80,6 @@ public class i_CMS extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(i_CMS.this, gso);
 
         sign= (Button) findViewById(R.id.sign);
-        Intent intent = new Intent(i_CMS.this, navigation_drawer.class);
 
         sign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,11 +115,13 @@ public class i_CMS extends AppCompatActivity {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
+            try
+            {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
+            }
+            catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.d(TAG, "Google sign in failed", e);
                 Toast.makeText(this,"SignIn failed!",Toast.LENGTH_SHORT).show();
@@ -142,7 +143,10 @@ public class i_CMS extends AppCompatActivity {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
-                        } else {
+                            startActivity(new Intent(i_CMS.this,navigation_drawer.class));
+
+                        }
+                        else {
                             // If sign in fails, display a message to the user.
                             Log.d(TAG, "signInWithCredential:failure", task.getException());
                             //Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();

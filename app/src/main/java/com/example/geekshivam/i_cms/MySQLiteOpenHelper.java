@@ -7,6 +7,15 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.Log;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
@@ -30,6 +39,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         super(context, databasename,null, databaseversion);
 
     }
+
     /**
      * Called when the database is created for the first time. This is where the
      * creation of tables and the initial population of the tables should happen.
@@ -69,12 +79,15 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     public boolean insertData_to_localDatabase(Complaint complaint)
     {
+        Log.d("iCMS","insertData_to_localDatabase() called.");
+
         SQLiteDatabase db =this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(COL_2, "put the complaint date here.");
         contentValues.put(COL_3, "put the complaint time here.");
+        //from complaint object
         contentValues.put(COL_4, complaint.getType_of_complaint());
         contentValues.put(COL_5, complaint.getIssue());
         contentValues.put(COL_6, complaint.getDescription());
@@ -91,10 +104,94 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
     public Cursor getAllData()
     {
         SQLiteDatabase db= this.getWritableDatabase();
         Cursor res=db.rawQuery("select * from "+table_name,null);
         return res;
+    }
+
+    public void fillDatabase(String email)
+    {
+        Log.d("iCMS","fillDatabase() called.");
+        final MySQLiteOpenHelper myDB=this;
+
+        FirebaseDatabase.
+                getInstance().
+                getReference().
+                child("Complaints").
+                orderByKey().
+                startAt(email.substring(0,9)).
+                endAt(email).
+                addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                         String type_of_complaint="Unavailable",issue="Unavailable",description="Unavailable";
+                         Boolean status=false;
+                         String address="Unavailable";
+                         int phoneNo=000;
+                         String available_date="Unavailable",availabletime="Unavailable";
+                         int i=0;
+
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+
+                            Object object=snapshot.getValue();
+                            Log.d("iCMS",object.toString()+" being added.\n i="+i);
+
+                            if(i==0)address=object.toString();
+
+                            if(i==1)available_date=object.toString();
+
+                            if(i==2)availabletime=object.toString();
+
+                            if(i==3)description=object.toString();
+
+                            if(i==4)issue=object.toString();
+
+                            if(i==5)phoneNo=Integer.parseInt(object.toString());
+
+                            if(i==6)status=Boolean.valueOf(object.toString());
+
+                            if(i==7)
+                            {
+                                type_of_complaint=object.toString();
+                                Log.d("iCMS","PT a:status="+status);
+                                Complaint c=new Complaint(type_of_complaint,issue,description,address,phoneNo,available_date,availabletime,status);
+                                Log.d("iCMS","PT b");
+                                Boolean res=myDB.insertData_to_localDatabase(c);
+                                Log.d("iCMS","PT c");
+
+                                i=-1;
+                                Log.d("iCMS","New complaint added with issue:"+c.getIssue()+"was Successful="+res.toString());
+                                Log.d("iCMS","===========================");
+                            }
+
+                            i++;
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
     }
 }

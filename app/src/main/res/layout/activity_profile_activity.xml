@@ -60,16 +60,16 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:background="@drawable/ic_email_black_24dp"/>
+
             <TextView
-                android:id="@+id/profile_id"
+                android:id="@+id/profile_email"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:padding="5dp"
-                android:fontFamily="@font/montserrat_regular"
                 android:layout_gravity="center_vertical"
-                android:text="f20171238@pilani.bits-pilani.ac.in"
-                />
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="5dp"
+                android:paddingLeft="2dp"
+                android:text="f20171238@pilani.bits-pilani.ac.in" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

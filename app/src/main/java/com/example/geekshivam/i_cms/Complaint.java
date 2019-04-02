@@ -1,6 +1,8 @@
 package com.example.geekshivam.i_cms;
 
 
+import android.util.Log;
+
 public class Complaint
 {
     private String type_of_complaint,issue,description;
@@ -13,11 +15,24 @@ public class Complaint
     public Complaint() {
     }
 
+    //For fresh complaints.
     public Complaint(String type_of_complaint, String issue, String description, String address, int phoneNo, String available_date, String availabletime) {
         this.type_of_complaint = type_of_complaint;
         this.issue = issue;
         this.description = description;
         this.status = true;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.available_date = available_date;
+        this.availabletime = availabletime;
+    }
+
+    //If complaint status needs to be set.
+    public Complaint(String type_of_complaint, String issue, String description, String address,int phoneNo, String available_date, String availabletime,Boolean status) {
+        this.type_of_complaint = type_of_complaint;
+        this.issue = issue;
+        this.description = description;
+        this.status = status;
         this.address = address;
         this.phoneNo = phoneNo;
         this.available_date = available_date;

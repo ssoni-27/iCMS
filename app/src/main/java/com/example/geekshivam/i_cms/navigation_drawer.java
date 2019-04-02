@@ -25,8 +25,17 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.widget.Toast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -36,6 +45,8 @@ public class navigation_drawer extends AppCompatActivity
     public static String currentFragment="";
 
     public MySQLiteOpenHelper myDB;
+
+    DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference().child("Complaints");
 
     final String preference="iCMSpreferences";
     final String userNamekey="userName";
@@ -49,36 +60,14 @@ public class navigation_drawer extends AppCompatActivity
     CircleImageView header_image;
 
     //Header information
+    FirebaseUser user;
     String userName="Anonymous";
     String userEmail="";
-    Uri userPhotoUri;
+    Uri userPhotoUrl=null;
 
     //Firebase Objects
     FirebaseAuth mFirebaseAuth;
     FirebaseAuth.AuthStateListener mAuthStateListener;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-//        mAuthStateListener=new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//
-//                if(firebaseAuth.getCurrentUser()==null)
-//                {
-//                    //TODO: undo  this
-//                    //startActivity(new Intent(navigation_drawer.this,i_CMS.class));
-//                }
-//            }
-//        };
-//
-//        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,18 +76,19 @@ public class navigation_drawer extends AppCompatActivity
 
         mFirebaseAuth=FirebaseAuth.getInstance();
 
-        //Create SQL database access instance.
+        getUserDetail();
+        Log.d("iCMS","User data:"+userName+userEmail+userPhotoUrl);
+
+        //Create SQL database access instance and populate if needed.
         myDB=new MySQLiteOpenHelper(this);
+        Log.d("iCMS","Database count:"+myDB.getAllData().getCount());
+        if(myDB.getAllData().getCount()==0 && userEmail.length()==34)
+        {
+            myDB.fillDatabase(userEmail);
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //TODO:undo comment
-        //get display name
-       // if(mFirebaseAuth.getCurrentUser().getEmail()!=null) {
-//            displayName=mFirebaseAuth.getCurrentUser().getDisplayName();
-       //     email = mFirebaseAuth.getCurrentUser().getEmail();
-        //}
-
 
         //gridView
         a=findViewById(R.id.new1);
@@ -107,7 +97,7 @@ public class navigation_drawer extends AppCompatActivity
             public void onClick(View v) {
                 gridview1_new g=new gridview1_new();
 
-                g.setDataFromActivity(myDB);
+                g.setDataFromActivity(myDB,userEmail);
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
@@ -142,11 +132,6 @@ public class navigation_drawer extends AppCompatActivity
             }
         });
 
-
-
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -157,11 +142,6 @@ public class navigation_drawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
 
-
-
-
-        getUserDetail();
-
         header_name=(TextView)headerView.findViewById(R.id.header_name);
         header_name.setText(userName);
 
@@ -169,7 +149,8 @@ public class navigation_drawer extends AppCompatActivity
         header_email.setText(userEmail);
 
         header_image=(CircleImageView)headerView.findViewById(R.id.header_imageView);
-        header_image.setImageURI(userPhotoUri);
+        Picasso.get().load(userPhotoUrl).fit().into(header_image);
+        //header_image.setImageURI(userPhotoUrl);
 
     }
 
@@ -183,7 +164,7 @@ public class navigation_drawer extends AppCompatActivity
             userName=sp.getString(userNamekey,"Anonymous");
 
             //TODO:save photo in internal memory and shift command below with get email and name command
-            userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
+            //userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
 
 
             if(userName!="Anonymous" && userEmail!="")
@@ -191,18 +172,22 @@ public class navigation_drawer extends AppCompatActivity
         }
 
         //TODO:save photo in internal memory and shift command below with get email and name command
-        userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
-
 
         //if user info not in shared preferences
         try
         {
-            if(mFirebaseAuth.getCurrentUser()!=null) {
-                userName = mFirebaseAuth.getCurrentUser().getDisplayName();
-                userEmail = mFirebaseAuth.getCurrentUser().getEmail();
-                //userPhotoUri=mFirebaseAuth.getCurrentUser().getPhotoUrl();
+            user=mFirebaseAuth.getCurrentUser();
+            if(user!= null) {
+                userName = user.getDisplayName();
+                userEmail = user.getEmail();
+                userPhotoUrl=user.getPhotoUrl();
 
                 //TODO:Logout if not bits email
+                if(!userEmail.contains("@pilani.bits-pilani.ac.in"));
+                {
+                    Toast.makeText(this,"Please login with registered student email id.",Toast.LENGTH_LONG);
+                    logout();
+                }
 
                 //Add user info to shared preferences.
                 SharedPreferences.Editor editor=sp.edit();
@@ -240,9 +225,14 @@ public class navigation_drawer extends AppCompatActivity
         if (id == R.id.nav_profile) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-            ft.replace(R.id.containHome, new profile_activity());
+            profile_activity pa1=new profile_activity();
+            getUserDetail();
+            pa1.setDataFromActivity(userName,userEmail);
+
+            ft.replace(R.id.containHome, pa1);
 
             ft.commit();
+
             // Handle the camera action
 
         }
@@ -253,16 +243,17 @@ public class navigation_drawer extends AppCompatActivity
 
             ft.commit();
 
-        }  else if (id == R.id.nav_contact) {
+        }
+        else if (id == R.id.nav_contact) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
             ft.replace(R.id.containHome, new Contact());
 
             ft.commit();
 
-        } else if (id == R.id.nav_logout) {
+        }
+        else if (id == R.id.nav_logout) {
             logout();
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -272,15 +263,23 @@ public class navigation_drawer extends AppCompatActivity
 
     public void logout()
     {
+
+        Log.d("iCMS","logout() called.");
         //clear shared preferences
         SharedPreferences sp=getSharedPreferences(preference,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sp.edit();
         editor.remove(userNamekey);
         editor.remove(userEmailkey);
         editor.commit();
+        Log.d("iCMS","Cleared shared preferences.");
 
         //TODO:clear database
 
         mFirebaseAuth.signOut();
+        startActivity(new Intent( navigation_drawer.this , i_CMS.class));
+
+
+        Log.d("iCMS","logged out.");
     }
+
 }
