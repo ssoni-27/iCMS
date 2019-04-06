@@ -15,24 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "794990523230-j80857r081ak5v8aija0k1duls14cdfs.apps.googleusercontent.com",
+          "client_id": "794990523230-5bgpvmh35j6o66epn6mflivugp27ggfn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.geekshivam.i_cms",
             "certificate_hash": "6db723670be0a5954ae1d87e4da5c1d043cc3201"
           }
-        },
-        {
-          "client_id": "794990523230-3grsncbr8ouo9mm6c7g2vf2tssck0jd5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.geekshivam.i_cms",
-            "certificate_hash": "03997fbbf81a915e7fdb92b3e028e7cfd0920e74"
-          }
-        },
-        {
-          "client_id": "794990523230-es8oo9uksplm0av7m8umk5de21s66rgk.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -41,20 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "794990523230-es8oo9uksplm0av7m8umk5de21s66rgk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

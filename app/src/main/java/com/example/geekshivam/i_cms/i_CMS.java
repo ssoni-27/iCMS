@@ -19,6 +19,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +30,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class i_CMS extends AppCompatActivity {
 
-    private final static String TAG="onstar";
+    private final static String TAG="iCMS";
     private final static int RC_SIGN_IN=1234;
 
     Button sign;
@@ -54,6 +55,8 @@ public class i_CMS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_i__cms);
 
+        //FirebaseApp.initializeApp(this.getApplicationContext());
+
         // Listen for logged in state.
         mAuth=FirebaseAuth.getInstance();
 
@@ -71,7 +74,7 @@ public class i_CMS extends AppCompatActivity {
 
         // Configure Google Sign In Options
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken("794990523230-es8oo9uksplm0av7m8umk5de21s66rgk.apps.googleusercontent.com")
                 .requestEmail()
                 .setHostedDomain("pilani.bits-pilani.ac.in")
                 .build();
