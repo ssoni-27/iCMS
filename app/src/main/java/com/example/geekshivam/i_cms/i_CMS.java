@@ -45,7 +45,7 @@ public class i_CMS extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG,"On Start...");
+        Log.d(TAG,"i_CMS: onStart() called");
 
         mAuth.addAuthStateListener(mAuthStateListener);
     }
@@ -54,7 +54,7 @@ public class i_CMS extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_i__cms);
-
+        Log.d(TAG,"i_CMS: onCreate() called");
         //FirebaseApp.initializeApp(this.getApplicationContext());
 
         // Listen for logged in state.
@@ -123,6 +123,7 @@ public class i_CMS extends AppCompatActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
+
             }
             catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately

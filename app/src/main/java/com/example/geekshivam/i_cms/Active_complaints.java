@@ -41,9 +41,6 @@ public class Active_complaints extends Fragment {
                         Intent i=new Intent(getActivity().getApplicationContext(),navigation_drawer.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
-
-
-
                     }
                 }
 
@@ -51,18 +48,18 @@ public class Active_complaints extends Fragment {
         return inflater.inflate(R.layout.activity_active_complaints, parent, false);
 
     }
+
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState)
     {
-
-
+        Log.d("iCMS","onViewCreated() called.");
         RecyclerView recyclerView=(RecyclerView) view.findViewById(R.id.recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         if(myDB!=null)
         {
-            Cursor res=myDB.getReadableDatabase().rawQuery(query_previous,null);
-
-            recyclerView.setAdapter(new recyclerview(getContext(),res));
+            Cursor cursor=myDB.getReadableDatabase().rawQuery(query_previous,null);
+            recyclerView.setAdapter(new recyclerview(getContext(),cursor));
+            Log.d("iCMS","Adapter is set.");
         }
 
     }

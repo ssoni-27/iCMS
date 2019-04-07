@@ -81,8 +81,6 @@ public class gridview1_new extends Fragment  {
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
 
-
-
                     }
                 }
 
@@ -96,7 +94,7 @@ public class gridview1_new extends Fragment  {
         //Firebase reference initialise
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getInstance().getReference();
-    //
+
         //dialog
         networktypeflag=0;
       
@@ -326,36 +324,10 @@ public class gridview1_new extends Fragment  {
 
         Log.d("iCMS","Complaint firebase key:"+key);
 
+        FirebaseDatabase.getInstance().getReference().child("Complaints").child(key).setValue(c);
 
         //Add data to local database and result.
         boolean result= myDB.insertData_to_localDatabase(c);
-
-        FirebaseDatabase.getInstance().getReference().child("Complaints").orderByKey().equalTo(key).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("iCMS",dataSnapshot.getValue(Complaint.class).getIssue());
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         return result;
     }

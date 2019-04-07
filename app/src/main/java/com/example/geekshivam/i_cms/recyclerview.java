@@ -35,7 +35,9 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
     @NonNull
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d("check","reached on create view holder");
+
+        Log.d("iCMS","reached on create view holder");
+
         LayoutInflater inflater = LayoutInflater.from(parent.getContext()) ;
         View view= inflater.inflate(R.layout.recycler_items,parent,false);
         return new ProgrammingViewHolder(view);
@@ -43,28 +45,32 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
 
     @Override
     public void onBindViewHolder(ProgrammingViewHolder holder, int position) {
-        Log.d("checkk","reached on bind ");
+
+        Log.d("iCMS","onBindViewHolder() called.");
 
         if(!mCursor.moveToPosition(position))
         {
             return;
         }
-        Log.d("chec","reached on bind holder");
-        String title =mCursor.getString(4)+":"+mCursor.getString(5);
+
+        Log.d("iCMS","reached on bind holder");
+        String title =mCursor.getString(3)+":"+mCursor.getString(4);
+        String date=mCursor.getString(2);
+        date=date.substring(6,8)+"/"+
+                date.substring(4,6)+"/"+
+                date.substring(0,4);
 
         holder.complaint.setText(title);
         holder.hostel.setText(mCursor.getString(6));
-        holder.date.setText(mCursor.getString(8));
+        holder.date.setText(date);
+
         Log.d("iCMS",title);
-
-
-
     }
 
     @Override
     public int getItemCount() {
+        Log.d("iCMS","getCount() called= "+mCursor.getCount());
         return mCursor.getCount();
-
     }
 
     public class ProgrammingViewHolder extends RecyclerView.ViewHolder{

@@ -3,6 +3,8 @@ package com.example.geekshivam.i_cms;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,12 +39,15 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.widget.Toast;
 
+import java.net.URL;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class navigation_drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static String currentFragment="";
+    public final String TAG="iCMS";
 
     public MySQLiteOpenHelper myDB;
 
@@ -73,6 +78,8 @@ public class navigation_drawer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+        Log.d(TAG,"nav_drawer:onCreate() called");
+
 
         mFirebaseAuth=FirebaseAuth.getInstance();
 
@@ -86,6 +93,9 @@ public class navigation_drawer extends AppCompatActivity
         {
             myDB.fillDatabase(userEmail);
         }
+
+        //update database
+        myDB.updateDatabase(userEmail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -149,6 +159,11 @@ public class navigation_drawer extends AppCompatActivity
         header_email.setText(userEmail);
 
         header_image=(CircleImageView)headerView.findViewById(R.id.header_imageView);
+    //TODO:set image
+//        URL url = new URL(userPhotoUrl.toString());
+//        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//        header_image.setImageBitmap(bmp);
+
         Picasso.get().load(userPhotoUrl).fit().into(header_image);
         //header_image.setImageURI(userPhotoUrl);
 
@@ -156,6 +171,7 @@ public class navigation_drawer extends AppCompatActivity
 
     public void getUserDetail()
     {
+        Log.d(TAG,"nav_drawer: getUserDetail() called");
         SharedPreferences sp=getSharedPreferences(preference, Context.MODE_PRIVATE);
 
         if(sp.contains(userNamekey)&&sp.contains(userEmailkey))
@@ -207,6 +223,8 @@ public class navigation_drawer extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.d(TAG,"nav_drawer:onBackPressed() called");
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -218,7 +236,11 @@ public class navigation_drawer extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
+        Log.d(TAG,"nav_drawer:onNavigationItemSelected() called");
+
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -274,10 +296,12 @@ public class navigation_drawer extends AppCompatActivity
         Log.d("iCMS","Cleared shared preferences.");
 
         //TODO:clear database
+        getApplicationContext().deleteDatabase("iCMS.db");
+
 
         mFirebaseAuth.signOut();
+        Log.d("iCMS","logging out.");
         startActivity(new Intent( navigation_drawer.this , i_CMS.class));
-
 
         Log.d("iCMS","logged out.");
     }

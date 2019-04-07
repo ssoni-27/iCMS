@@ -3,9 +3,11 @@ package com.example.geekshivam.i_cms;
 
 import android.util.Log;
 
+import java.sql.Timestamp;
+
 public class Complaint
 {
-    private String type_of_complaint,issue,description;
+    private String timestamp,type_of_complaint,issue,description;
     private Boolean status;
     private String address;
     private int phoneNo;
@@ -17,6 +19,14 @@ public class Complaint
 
     //For fresh complaints.
     public Complaint(String type_of_complaint, String issue, String description, String address, int phoneNo, String available_date, String availabletime) {
+        String t=new Timestamp(System.currentTimeMillis()).toString();
+        this.timestamp=t.substring(0,4)+
+            t.substring(5,7)+
+            t.substring(8,10)+
+            t.substring(11,13)+
+            t.substring(14,16)+
+            t.substring(17,19)+
+            t.substring(20,21);
         this.type_of_complaint = type_of_complaint;
         this.issue = issue;
         this.description = description;
@@ -28,7 +38,8 @@ public class Complaint
     }
 
     //If complaint status needs to be set.
-    public Complaint(String type_of_complaint, String issue, String description, String address,int phoneNo, String available_date, String availabletime,Boolean status) {
+    public Complaint(String timestamp,String type_of_complaint, String issue, String description, String address,int phoneNo, String available_date, String availabletime,Boolean status) {
+        this.timestamp=timestamp;
         this.type_of_complaint = type_of_complaint;
         this.issue = issue;
         this.description = description;
@@ -37,6 +48,10 @@ public class Complaint
         this.phoneNo = phoneNo;
         this.available_date = available_date;
         this.availabletime = availabletime;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
     }
 
     public String getType_of_complaint() {
