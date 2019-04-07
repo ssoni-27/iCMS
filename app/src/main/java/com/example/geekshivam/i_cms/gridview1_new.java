@@ -325,7 +325,7 @@ public class gridview1_new extends Fragment  {
                 timestamp.substring(20,22);
 
         Log.d("iCMS","Complaint firebase key:"+key);
-        m.child("Complaints").child(key).setValue(c);
+
 
         //Add data to local database and result.
         boolean result= myDB.insertData_to_localDatabase(c);

@@ -35,6 +35,7 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
     @NonNull
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.d("check","reached on create view holder");
         LayoutInflater inflater = LayoutInflater.from(parent.getContext()) ;
         View view= inflater.inflate(R.layout.recycler_items,parent,false);
         return new ProgrammingViewHolder(view);
@@ -42,15 +43,21 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
 
     @Override
     public void onBindViewHolder(ProgrammingViewHolder holder, int position) {
+        Log.d("checkk","reached on bind ");
 
-        if(!mCursor.move(position))
+        if(!mCursor.moveToPosition(position))
         {
             return;
         }
-
+        Log.d("chec","reached on bind holder");
         String title =mCursor.getString(4)+":"+mCursor.getString(5);
+
+        holder.complaint.setText(title);
+        holder.hostel.setText(mCursor.getString(6));
+        holder.date.setText(mCursor.getString(8));
         Log.d("iCMS",title);
-        holder.textView.setText(title);
+
+
 
     }
 
@@ -63,12 +70,17 @@ public class recyclerview extends RecyclerView.Adapter<recyclerview.ProgrammingV
     public class ProgrammingViewHolder extends RecyclerView.ViewHolder{
         ImageView imageicon;
         TextView textView;
-
+        TextView complaint;
+        TextView hostel;
+        TextView date;
         public ProgrammingViewHolder(View itemview){
             super(itemview);
 
             imageicon=(ImageView) itemview.findViewById(R.id.icon);
-            textView=(TextView) itemview.findViewById(R.id.abc);
+            complaint=(TextView) itemview.findViewById(R.id.abc);
+            hostel=itemview.findViewById(R.id.hostel);
+            date=itemview.findViewById(R.id.date);
+
         }
     }
 }
