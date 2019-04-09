@@ -15,11 +15,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "794990523230-5bgpvmh35j6o66epn6mflivugp27ggfn.apps.googleusercontent.com",
+          "client_id": "794990523230-b3i3dvj11r7lbkdm3gg779488ebbpdbl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.geekshivam.i_cms",
             "certificate_hash": "6db723670be0a5954ae1d87e4da5c1d043cc3201"
+          }
+        },
+        {
+          "client_id": "794990523230-k9sti9mk0afmai6mqle8l3n2mr2fr4me.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.geekshivam.i_cms",
+            "certificate_hash": "03997fbbf81a915e7fdb92b3e028e7cfd0920e74"
+          }
+        },
+        {
+          "client_id": "794990523230-lac7if519c0u51fho5oqko009cjt6l9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.geekshivam.i_cms",
+            "certificate_hash": "eedb8989c96a10fbe1a007cf9b4261a74ab10de8"
           }
         }
       ],

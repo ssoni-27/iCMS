@@ -82,16 +82,6 @@ public class i_CMS extends AppCompatActivity {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(i_CMS.this, gso);
 
-        sign= (Button) findViewById(R.id.sign);
-
-        sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(i_CMS.this, navigation_drawer.class));
-            }
-        });
-
        google_SignIn_Btn=(SignInButton)findViewById(R.id.google_SignIn_Btn);
        google_SignIn_Btn.setOnClickListener(new View.OnClickListener() {
            @Override

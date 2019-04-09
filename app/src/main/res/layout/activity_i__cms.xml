@@ -17,6 +17,15 @@
         android:textColor="@color/Black"
         android:padding="15dp"
         android:fontFamily="@font/montserrat_regular" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IPC-Complaint Management System."
+        android:gravity="center"
+        android:layout_marginTop="490dp"
+        android:textColor="@color/Black"
+        android:padding="15dp"
+        android:fontFamily="@font/montserrat_regular" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,19 +80,6 @@
                     app:backgroundTint="@android:color/white"
                     app:srcCompat="@drawable/ic_google" />
 
-                <Button
-                    android:id="@+id/sign"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/background_new"
-                    android:fontFamily="@font/calibri"
-                    android:text="Sign in"
-                    android:textAllCaps="false"
-                    android:textColor="@color/Black"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
             </LinearLayout>
 
 

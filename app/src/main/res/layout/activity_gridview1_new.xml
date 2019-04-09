@@ -105,17 +105,6 @@
         android:text="Available Time"
         android:textColor="@color/Black"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TO"
-        android:layout_above="@+id/ok"
-        android:layout_marginLeft="165dp"
-        android:layout_marginBottom="25dp"
-        android:textSize="15sp"
-        android:textColor="@color/Black"/>
-
 
 
 </RelativeLayout>
