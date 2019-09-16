@@ -12,9 +12,24 @@ public class Complaint
     private String address;
     private int phoneNo;
     private String available_date,availabletime;
+    //new variables for each complaint having default value
+ private String complaintLodgedIp;
+    private String technicianAlloted;
+    private String  faultDiagnosis;
+    private String  materialReplaced;
+    private String  remarkReason;
+    private String  callCompletedDate;
+    private String  userRemark;
+    private String  userRemarkDesc;
+    private String technicianAllotedDate;   
+
+
+
 
     //Construstors and getters,setters.
     public Complaint() {
+
+
     }
 
     //For fresh complaints.
@@ -35,6 +50,19 @@ public class Complaint
         this.phoneNo = phoneNo;
         this.available_date = available_date;
         this.availabletime = availabletime;
+        //default value for these new variables not needed from the user
+       this.complaintLodgedIp="0.0.0";
+        this.technicianAlloted="Mr. xyz";
+        this.technicianAllotedDate="01/01/2020";
+        this.faultDiagnosis="not diagnozed";
+        this.materialReplaced="Router";
+        this.remarkReason="Unknown";
+        this.callCompletedDate="01/01/2020";
+        this.userRemark="Excellent";
+        this.userRemarkDesc="Excellent";
+
+
+
     }
 
     //If complaint status needs to be set.
